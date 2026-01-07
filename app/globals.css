@@ -5,18 +5,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* DELETE OR COMMENT THIS OUT if it exists in your file */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
 body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  background-image: -webkit-gradient(
-    linear,
-    right top,
-    left bottom,
-    from(#1f2833),
-    color-stop(#0b0c10),
-    to(black)
-  );
-  background-image: linear-gradient(to bottom left, #1f2833, #0b0c10, black);
+  /* Set a solid black background */
+  background-color: #000;
+  /* Ensure the background covers the full page height */
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden; /* Prevents horizontal scroll from stars */
 }
 
 #stars1 {
