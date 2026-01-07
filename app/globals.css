@@ -7,80 +7,164 @@
 
 :root {
   /* Define star patterns as variables so we don't repeat the long strings */
-  --stars-small: 1324px 718px #fff, 1929px 1475px #fff, 1717px 1226px #fff,
-    1858px 174px #fff, 383px 416px #fff, 1538px 1366px #fff, 911px 432px #fff,
-    1851px 1720px #fff, 532px 1795px #fff, 409px 364px #fff, 150px 1313px #fff,
-    840px 1901px #fff, 1761px 1339px #fff, 192px 245px #fff, 1525px 1289px #fff,
-    124px 262px #fff, 32px 916px #fff, 705px 1911px #fff, 1710px 247px #fff,
-    1812px 1828px #fff, 1141px 483px #fff, 443px 190px #fff, 1896px 1584px #fff,
-    1981px 608px #fff, 1327px 1133px #fff, 377px 420px #fff, 64px 1143px #fff,
-    477px 1211px #fff, 504px 634px #fff, 1562px 436px #fff, 1351px 510px #fff,
-    638px 683px #fff, 1278px 383px #fff, 828px 1087px #fff, 894px 69px #fff,
-    484px 628px #fff, 287px 531px #fff, 1535px 795px #fff, 1835px 1836px #fff,
-    760px 1185px #fff, 1649px 1841px #fff, 1288px 1103px #fff, 1576px 540px #fff,
-    489px 1355px #fff, 1439px 1819px #fff, 445px 165px #fff, 1269px 477px #fff,
-    173px 1814px #fff, 1855px 364px #fff, 840px 836px #fff, 1531px 1985px #fff,
-    622px 837px #fff, 1156px 299px #fff, 1423px 1171px #fff, 1921px 340px #fff,
-    1694px 1238px #fff, 1221px 1638px #fff, 1643px 1471px #fff,
-    649px 1114px #fff, 118px 1650px #fff, 1569px 1103px #fff, 243px 1264px #fff,
-    442px 1015px #fff, 748px 339px #fff, 1140px 1985px #fff, 444px 1836px #fff,
-    1920px 1072px #fff, 681px 1264px #fff, 430px 1160px #fff, 958px 1529px #fff,
-    457px 115px #fff, 1190px 548px #fff, 1795px 1183px #fff, 479px 1817px #fff,
-    1648px 387px #fff, 1738px 1998px #fff, 1323px 657px #fff, 796px 637px #fff,
-    1253px 605px #fff, 942px 1524px #fff, 1825px 1544px #fff, 1481px 3px #fff;
+  --star-color: #ffffff;
+  --toggle-bg: rgba(255,255,255,0.06);
+  --toggle-border: rgba(255,255,255,0.06);
+  --page-text: #ffffff;
+  --toggle-foreground: #FFD166;
 
-  --stars-medium: 137px 289px #fff, 1347px 456px #fff, 714px 680px #fff,
-    926px 1499px #fff, 154px 1026px #fff, 644px 1203px #fff, 1240px 1641px #fff,
-    1622px 1952px #fff, 333px 1852px #fff, 989px 1445px #fff, 1395px 1275px #fff,
-    972px 854px #fff, 1863px 1207px #fff, 394px 1793px #fff, 549px 439px #fff,
-    835px 558px #fff, 1688px 1261px #fff, 1906px 814px #fff, 563px 1298px #fff,
-    1488px 1823px #fff, 895px 1px #fff, 1735px 471px #fff, 127px 565px #fff,
-    1629px 837px #fff, 915px 150px #fff, 527px 1292px #fff, 931px 1386px #fff,
-    1735px 1858px #fff, 1440px 1063px #fff, 514px 1063px #fff, 1966px 147px #fff,
-    1071px 1839px #fff, 1847px 1106px #fff, 1770px 639px #fff,
-    1998px 1071px #fff, 834px 1266px #fff, 1331px 246px #fff, 12px 952px #fff,
-    717px 1304px #fff, 360px 337px #fff, 1277px 356px #fff, 162px 646px #fff,
-    1527px 689px #fff, 1599px 218px #fff, 909px 246px #fff, 1174px 1020px #fff,
-    693px 337px #fff, 802px 684px #fff, 821px 73px #fff, 149px 698px #fff,
-    1198px 1357px #fff, 1798px 1341px #fff, 1109px 1825px #fff,
-    1079px 719px #fff, 727px 1226px #fff, 1778px 1752px #fff, 1087px 1618px #fff,
-    1375px 715px #fff, 1346px 1601px #fff, 1078px 1340px #fff, 789px 967px #fff,
-    76px 44px #fff, 605px 1291px #fff, 839px 1607px #fff, 1253px 565px #fff,
-    720px 1690px #fff, 1893px 1853px #fff, 53px 757px #fff, 501px 1522px #fff,
-    1153px 284px #fff, 152px 1497px #fff, 288px 314px #fff, 216px 1289px #fff,
-    1900px 1702px #fff, 12px 1866px #fff, 1350px 1255px #fff, 341px 1800px #fff,
-    1931px 865px #fff, 742px 1868px #fff, 703px 1924px #fff, 1482px 550px #fff;
+  --stars-small: 1324px 718px var(--star-color), 1929px 1475px var(--star-color), 1717px 1226px var(--star-color),
+    1858px 174px var(--star-color), 383px 416px var(--star-color), 1538px 1366px var(--star-color), 911px 432px var(--star-color),
+    1851px 1720px var(--star-color), 532px 1795px var(--star-color), 409px 364px var(--star-color), 150px 1313px var(--star-color),
+    840px 1901px var(--star-color), 1761px 1339px var(--star-color), 192px 245px var(--star-color), 1525px 1289px var(--star-color),
+    124px 262px var(--star-color), 32px 916px var(--star-color), 705px 1911px var(--star-color), 1710px 247px var(--star-color),
+    1812px 1828px var(--star-color), 1141px 483px var(--star-color), 443px 190px var(--star-color), 1896px 1584px var(--star-color),
+    1981px 608px var(--star-color), 1327px 1133px var(--star-color), 377px 420px var(--star-color), 64px 1143px var(--star-color),
+    477px 1211px var(--star-color), 504px 634px var(--star-color), 1562px 436px var(--star-color), 1351px 510px var(--star-color),
+    638px 683px var(--star-color), 1278px 383px var(--star-color), 828px 1087px var(--star-color), 894px 69px var(--star-color),
+    484px 628px var(--star-color), 287px 531px var(--star-color), 1535px 795px var(--star-color), 1835px 1836px var(--star-color),
+    760px 1185px var(--star-color), 1649px 1841px var(--star-color), 1288px 1103px var(--star-color), 1576px 540px var(--star-color),
+    489px 1355px var(--star-color), 1439px 1819px var(--star-color), 445px 165px var(--star-color), 1269px 477px var(--star-color),
+    173px 1814px var(--star-color), 1855px 364px var(--star-color), 840px 836px var(--star-color), 1531px 1985px var(--star-color),
+    622px 837px var(--star-color), 1156px 299px var(--star-color), 1423px 1171px var(--star-color), 1921px 340px var(--star-color),
+    1694px 1238px var(--star-color), 1221px 1638px var(--star-color), 1643px 1471px var(--star-color),
+    649px 1114px var(--star-color), 118px 1650px var(--star-color), 1569px 1103px var(--star-color), 243px 1264px var(--star-color),
+    442px 1015px var(--star-color), 748px 339px var(--star-color), 1140px 1985px var(--star-color), 444px 1836px var(--star-color),
+    1920px 1072px var(--star-color), 681px 1264px var(--star-color), 430px 1160px var(--star-color), 958px 1529px var(--star-color),
+    457px 115px var(--star-color), 1190px 548px var(--star-color), 1795px 1183px var(--star-color), 479px 1817px var(--star-color),
+    1648px 387px var(--star-color), 1738px 1998px var(--star-color), 1323px 657px var(--star-color), 796px 637px var(--star-color),
+    1253px 605px var(--star-color), 942px 1524px var(--star-color), 1825px 1544px var(--star-color), 1481px 3px var(--star-color);
 
-  --stars-large: 748px 1447px #fff, 855px 1792px #fff, 1734px 880px #fff,
-    1292px 168px #fff, 1819px 563px #fff, 999px 1518px #fff, 1111px 1266px #fff,
-    1762px 1547px #fff, 240px 1530px #fff, 1859px 129px #fff, 661px 1312px #fff,
-    1567px 1500px #fff, 51px 466px #fff, 103px 1063px #fff, 578px 313px #fff,
-    180px 757px #fff, 593px 1921px #fff, 237px 1728px #fff, 194px 224px #fff,
-    1135px 1618px #fff, 650px 1024px #fff, 1714px 786px #fff, 1584px 612px #fff,
-    1690px 658px #fff, 1514px 1019px #fff, 1608px 1365px #fff,
-    1926px 1534px #fff, 29px 380px #fff, 1915px 299px #fff, 296px 1376px #fff,
-    1936px 774px #fff, 1406px 319px #fff, 316px 1173px #fff, 975px 1366px #fff,
-    297px 1807px #fff, 1518px 541px #fff, 1193px 604px #fff, 856px 1180px #fff,
-    1646px 1748px #fff, 444px 1482px #fff, 1108px 743px #fff, 241px 875px #fff,
-    1690px 738px #fff, 1157px 611px #fff, 173px 1428px #fff, 1427px 676px #fff,
-    181px 738px #fff, 918px 1843px #fff, 728px 37px #fff, 329px 931px #fff,
-    441px 637px #fff, 101px 957px #fff, 1058px 1259px #fff, 772px 958px #fff,
-    663px 865px #fff, 558px 403px #fff, 457px 895px #fff, 1498px 1px #fff,
-    1665px 1942px #fff, 234px 1613px #fff, 1284px 86px #fff, 1872px 1364px #fff,
-    1824px 1265px #fff, 625px 1862px #fff, 1960px 610px #fff, 30px 436px #fff,
-    208px 1011px #fff, 1430px 1377px #fff, 299px 59px #fff, 1710px 1531px #fff,
-    1509px 1776px #fff, 1737px 1548px #fff, 330px 517px #fff, 1143px 1286px #fff,
-    280px 1569px #fff, 1134px 801px #fff, 1057px 1341px #fff, 1734px 181px #fff,
-    456px 1532px #fff, 177px 383px #fff, 41px 1785px #fff, 622px 1642px #fff;
+  --stars-medium: 137px 289px var(--star-color), 1347px 456px var(--star-color), 714px 680px var(--star-color),
+    926px 1499px var(--star-color), 154px 1026px var(--star-color), 644px 1203px var(--star-color), 1240px 1641px var(--star-color),
+    1622px 1952px var(--star-color), 333px 1852px var(--star-color), 989px 1445px var(--star-color), 1395px 1275px var(--star-color),
+    972px 854px var(--star-color), 1863px 1207px var(--star-color), 394px 1793px var(--star-color), 549px 439px var(--star-color),
+    835px 558px var(--star-color), 1688px 1261px var(--star-color), 1906px 814px var(--star-color), 563px 1298px var(--star-color),
+    1488px 1823px var(--star-color), 895px 1px var(--star-color), 1735px 471px var(--star-color), 127px 565px var(--star-color),
+    1629px 837px var(--star-color), 915px 150px var(--star-color), 527px 1292px var(--star-color), 931px 1386px var(--star-color),
+    1735px 1858px var(--star-color), 1440px 1063px var(--star-color), 514px 1063px var(--star-color), 1966px 147px var(--star-color),
+    1071px 1839px var(--star-color), 1847px 1106px var(--star-color), 1770px 639px var(--star-color),
+    1998px 1071px var(--star-color), 834px 1266px var(--star-color), 1331px 246px var(--star-color), 12px 952px var(--star-color),
+    717px 1304px var(--star-color), 360px 337px var(--star-color), 1277px 356px var(--star-color), 162px 646px var(--star-color),
+    1527px 689px var(--star-color), 1599px 218px var(--star-color), 909px 246px var(--star-color), 1174px 1020px var(--star-color),
+    693px 337px var(--star-color), 802px 684px var(--star-color), 821px 73px var(--star-color), 149px 698px var(--star-color),
+    1198px 1357px var(--star-color), 1798px 1341px var(--star-color), 1109px 1825px var(--star-color),
+    1079px 719px var(--star-color), 727px 1226px var(--star-color), 1778px 1752px var(--star-color), 1087px 1618px var(--star-color),
+    1375px 715px var(--star-color), 1346px 1601px var(--star-color), 1078px 1340px var(--star-color), 789px 967px var(--star-color),
+    76px 44px var(--star-color), 605px 1291px var(--star-color), 839px 1607px var(--star-color), 1253px 565px var(--star-color),
+    720px 1690px var(--star-color), 1893px 1853px var(--star-color), 53px 757px var(--star-color), 501px 1522px var(--star-color),
+    1153px 284px var(--star-color), 152px 1497px var(--star-color), 288px 314px var(--star-color), 216px 1289px var(--star-color),
+    1900px 1702px var(--star-color), 12px 1866px var(--star-color), 1350px 1255px var(--star-color), 341px 1800px var(--star-color),
+    1931px 865px var(--star-color), 742px 1868px var(--star-color), 703px 1924px var(--star-color), 1482px 550px var(--star-color);
+
+  --stars-large: 748px 1447px var(--star-color), 855px 1792px var(--star-color), 1734px 880px var(--star-color),
+    1292px 168px var(--star-color), 1819px 563px var(--star-color), 999px 1518px var(--star-color), 1111px 1266px var(--star-color),
+    1762px 1547px var(--star-color), 240px 1530px var(--star-color), 1859px 129px var(--star-color), 661px 1312px var(--star-color),
+    1567px 1500px var(--star-color), 51px 466px var(--star-color), 103px 1063px var(--star-color), 578px 313px var(--star-color),
+    180px 757px var(--star-color), 593px 1921px var(--star-color), 237px 1728px var(--star-color), 194px 224px var(--star-color),
+    1135px 1618px var(--star-color), 650px 1024px var(--star-color), 1714px 786px var(--star-color), 1584px 612px var(--star-color),
+    1690px 658px var(--star-color), 1514px 1019px var(--star-color), 1608px 1365px var(--star-color),
+    1926px 1534px var(--star-color), 29px 380px var(--star-color), 1915px 299px var(--star-color), 296px 1376px var(--star-color),
+    1936px 774px var(--star-color), 1406px 319px var(--star-color), 316px 1173px var(--star-color), 975px 1366px var(--star-color),
+    297px 1807px var(--star-color), 1518px 541px var(--star-color), 1193px 604px var(--star-color), 856px 1180px var(--star-color),
+    1646px 1748px var(--star-color), 444px 1482px var(--star-color), 1108px 743px var(--star-color), 241px 875px var(--star-color),
+    1690px 738px var(--star-color), 1157px 611px var(--star-color), 173px 1428px var(--star-color), 1427px 676px var(--star-color),
+    181px 738px var(--star-color), 918px 1843px var(--star-color), 728px 37px var(--star-color), 329px 931px var(--star-color),
+    441px 637px var(--star-color), 101px 957px var(--star-color), 1058px 1259px var(--star-color), 772px 958px var(--star-color),
+    663px 865px var(--star-color), 558px 403px var(--star-color), 457px 895px var(--star-color), 1498px 1px var(--star-color),
+    1665px 1942px var(--star-color), 234px 1613px var(--star-color), 1284px 86px var(--star-color), 1872px 1364px var(--star-color),
+    1824px 1265px var(--star-color), 625px 1862px var(--star-color), 1960px 610px var(--star-color), 30px 436px var(--star-color),
+    208px 1011px var(--star-color), 1430px 1377px var(--star-color), 299px 59px var(--star-color), 1710px 1531px var(--star-color),
+    1509px 1776px var(--star-color), 1737px 1548px var(--star-color), 330px 517px var(--star-color), 1143px 1286px var(--star-color),
+    280px 1569px var(--star-color), 1134px 801px var(--star-color), 1057px 1341px var(--star-color), 1734px 181px var(--star-color),
+    456px 1532px var(--star-color), 177px 383px var(--star-color), 41px 1785px var(--star-color), 622px 1642px var(--star-color);
 }
 
 body {
-  color: white;
+  color: var(--page-text);
   background-color: #000;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
   font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Theme variants applied on the root element */
+/* Theme variable overrides and gradients */
+html[data-theme="light"] {
+  /* Light theme: white background with dark (black) stars */
+  --star-color: rgba(0,0,0,0.95);
+  --toggle-bg: rgba(255,255,255,0.92);
+  --toggle-border: rgba(0,0,0,0.08);
+  --page-text: #0f172a;
+  --toggle-foreground: #1f2937;
+}
+
+html[data-theme="light"] body {
+  background: #ffffff;
+}
+
+html[data-theme="dark"] {
+  --star-color: rgba(230,247,255,0.95);
+  --toggle-bg: rgba(255,255,255,0.06);
+  --toggle-border: rgba(255,255,255,0.06);
+  --page-text: #e6eef6;
+  --toggle-foreground: #FFD166;
+}
+
+html[data-theme="dark"] body {
+  background: linear-gradient(180deg,#030512 0%, #081229 100%);
+}
+
+/* Floating theme toggle button */
+.theme-toggle {
+  position: fixed;
+  right: 1rem;
+  bottom: 1.25rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--toggle-bg);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border: 1px solid var(--toggle-border);
+  color: var(--toggle-foreground);
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+  z-index: 60;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-3px);
+}
+
+.theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* Ensure SVG icons inherit the button color and use it for strokes/fills */
+.theme-toggle svg {
+  color: inherit;
+}
+.theme-toggle svg path,
+.theme-toggle svg circle {
+  stroke: currentColor;
+  fill: none;
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+/* Neutralize Tailwind dark-mode utilities when user-selected light theme is active */
+html[data-theme="light"] .dark\:bg-black {
+  background-color: transparent !important;
 }
 
 /* Base Star Style */
