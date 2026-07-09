@@ -2,80 +2,102 @@ export interface Job {
   role: string;
   company: string;
   duration: string;
+  location: string;
   description: string[];
+}
+
+export interface Project {
+  name: string;
+  duration: string;
+  subtitle: string;
+  description: string;
 }
 
 export interface PortfolioSkills {
   languages: string[];
   frameworks: string[];
   databases: string[];
-  cloud: string[];
+  tools: string[];
   concepts: string[];
 }
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  email: "contact@kavin.dev",
+  github: "https://github.com/Kavin-Brat",
+  linkedin: "https://www.linkedin.com/in/kavin-barath/",
+  email: "kavinbarath66@gmail.com",
   resume: "/Kavin-Resume.pdf",
 };
 
 export const PORTFOLIO_SKILLS: PortfolioSkills = {
-  languages: ["TypeScript", "JavaScript", "Python", "Golang", "SQL", "HTML/CSS"],
-  frameworks: ["React", "Next.js", "Node.js", "Express", "FastAPI", "Tailwind CSS"],
-  databases: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Kafka"],
-  cloud: ["AWS (EC2, S3, Lambda, API Gateway, IAM, CDK)", "GCP", "Docker", "Kubernetes"],
-  concepts: ["Microservices", "RESTful APIs", "CI/CD Pipelines", "Event-Driven Architecture", "System Design"],
+  languages: ["JavaScript", "TypeScript", "HTML", "CSS", "SQL"],
+  frameworks: ["React.js", "Node.js", "Express.js", "Vite", "Material UI", "Tailwind CSS", "Redux"],
+  databases: ["PostgreSQL", "REST APIs"],
+  tools: ["Webpack Module Federation", "Nginx", "API Gateway", "Git"],
+  concepts: ["Micro Frontend (MFE)", "Microservices", "RESTful APIs", "Monolithic Migration", "Code Reviews & Standards"],
 };
 
 export const DOMAIN_EXPERTISE: string[] = [
-  "FinTech", "E-Commerce", "SaaS Platforms", "Microservices & Distributed Systems", 
-  "Customer Management System", "AI ChatBot Integration", "Automated Workflows", 
-  "Healthcare Platforms", "Real Estate Portals", "Custom APIs & Gateways", 
-  "Database Tuning & Scalability", "CI/CD & Infrastructure Codes (IaC)"
+  "FinTech & Global Remittance",
+  "Transaction Management Systems",
+  "Micro Frontend Architecture",
+  "Enterprise Portal Development",
+  "Real-time FX Rate Visualization",
+  "Fintech Partner Onboarding",
+  "API Gateway Integration",
+  "Financial Dashboards & Analytics",
+  "Customer Support Modules",
+  "Cross-functional Team Leadership",
 ];
 
 export const JOBS_EXPERIENCE: Job[] = [
   {
-    role: "Lead Software Engineer",
+    role: "Senior Software Engineer",
     company: "Openturf Technologies",
-    duration: "2024 - Present",
+    duration: "03/2024 - Present",
+    location: "Bengaluru, India",
     description: [
-      "Designed and implemented end-to-end architecture for fintech microservices including ledgers, onboarding, BizOps, and compliance pathways.",
-      "Championed AWS-based DevOps practices, automated pipelines, secure IAM roles, and CDK infrastructure deployments.",
-      "Led, mentored, and enabled junior developers within an agile development pod.",
-      "Optimized database architectures with MongoDB, MySQL, PostgreSQL, and Kafka for microservices scalability."
-    ]
+      "Architected and led the monolithic migration of the TOPS Portal (an enterprise transaction management system) into a modular Micro Frontend (MFE) architecture using Webpack Module Federation, drastically improving cross-team deployment autonomy.",
+      "Designed and engineered highly resilient backend microservices using Node.js to securely process, cancel, and reverse high-volume financial transactions coming from the Engage Plus Portal.",
+      "Spearheaded an engineering team of 4 members, overseeing end-to-end development, testing workflows, and core API gateway integrations for the transaction monitoring platform.",
+      "Deployed client-side onsite to partner directly with Product Engineering and Business Operations stakeholders, translating complex transaction compliance workflows into scalable technical requirements.",
+      "Established strict engineering standards by driving comprehensive code reviews, which successfully optimized bundle sizes and resulted in a 15% measurable improvement in overall codebase maintainability.",
+    ],
   },
   {
-    role: "Tech Lead - Full Stack Development",
-    company: "AppXperts IT Solutions",
-    duration: "2022 - 2024",
+    role: "Software Engineer",
+    company: "Openturf Technologies",
+    duration: "08/2021 - 02/2024",
+    location: "Bengaluru, India",
     description: [
-      "Configured secure, high-availability AWS infrastructures using VPC, EC2, Lambda, and API Gateway instances.",
-      "Engineered CI/CD flows with GitHub Actions to automate server configs and fast live deployments.",
-      "Designed real-time event-driven messaging pipelines utilizing Kafka queues for decoupled messaging.",
-      "Managed client communication, reviews, sprint iterations, and technical milestone planning."
-    ]
+      "Engineered core modules for two enterprise fintech solutions: a Partner Management Portal automating API onboarding workflows for external fintech partners, and the Engage Portal tracking global remittance data streams.",
+      "Architected & developed high-performance analytics dashboards within the Engage Plus Portal using React.js and Vite, delivering real-time transaction summaries, ledger details, dynamic FX rate visualizations, and custom daily dashboard charting tools.",
+      "Designed and deployed an integrated customer support module that streamlined transaction issue resolution, significantly reducing ticket resolution latency for end-users.",
+      "Optimized application load times and state synchronization across complex web interfaces by implementing clean code architectures, advanced data-fetching paradigms, and robust REST API integrations.",
+      "Partnered with cross-functional product and design teams to transform financial reporting wireframes into intuitive, highly accessible, and pixel-perfect dashboard interfaces.",
+    ],
+  },
+];
+
+export const PROJECTS: Project[] = [
+  {
+    name: "TOPS Portal",
+    duration: "08/2024 - Present",
+    subtitle: "Transaction Operations and Processing System",
+    description:
+      "An enterprise transaction management platform designed to streamline financial workflows. It facilitates real-time transaction monitoring, handles complex failure recovery pathways (such as automated cancellations and reversals), and processes live FX data tracking. Additionally, it provides critical, high-availability internal operations suites to optimize transaction resolution cycles for business units.",
   },
   {
-    role: "Software Developer",
-    company: "AppXperts IT Solutions",
-    duration: "2020 - 2022",
-    description: [
-      "Programmed REST integrations and client portals using Node.js, Angular, and React frameworks.",
-      "Created custom configurations for Calendly, Shopify, and social platform integrations.",
-      "Assisted team with backup management, Docker setups, and script automations."
-    ]
+    name: "Engage Portal",
+    duration: "02/2023 - 08/2024",
+    subtitle: "Global Transaction Monitoring & Support",
+    description:
+      "A client-facing platform built for a global payments company to help users monitor, track, and report international remittance transactions in real-time. Includes comprehensive dashboards for transaction summaries, FX rate analysis, ledger details, and daily dashboard tools. Also implemented a support module to help customers raise tickets and resolve issues directly through the platform.",
   },
   {
-    role: "Software Trainee",
-    company: "Hattussa IT Solutions",
-    duration: "2019 - 2020",
-    description: [
-      "Created backend pipelines to query, filter, and structure raw data from 200+ external sources.",
-      "Designed SQL/NoSQL databases optimization tasks reducing query latency.",
-      "Assisted full-cycle QA testing and deployment prep tasks."
-    ]
-  }
+    name: "Partner Management Portal",
+    duration: "08/2021 - 02/2023",
+    subtitle: "Fintech Partner Onboarding & API Integration",
+    description:
+      "A fintech partner onboarding platform offering real-time access to APIs, allowing partners to generate reports based on specific corridors and test cases, track API testing progress in UAT environments, and receive technical support for smooth integration and collaboration.",
+  },
 ];

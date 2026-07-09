@@ -18,13 +18,13 @@ const About: React.FC = () => {
         {/* Description */}
         <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-350 text-left text-base sm:text-lg leading-relaxed">
           <p>
-            I am a passionate software architecture enthusiast with over **5 years** of hands-on professional journey building web-scale cloud services. My core development philosophies center around reliability, simplicity, and performance.
+            Senior Full-Stack Engineer with <strong>5 years of experience</strong> specializing in building and scaling enterprise-level applications using React.js and Node.js. My core philosophy centers around clean code, project ownership, and direct client engagement.
           </p>
           <p>
-            I enjoy dismantling monolithic structures into decoupled **microservices** layouts, resolving container orchestrations, and formulating modular setups using **node.js / python** engines. A substantial portion of my time involves structuring Kafka-based queue models and managing critical database schema strategies.
+            I specialize in <strong>Micro Frontend (MFE) architecture</strong> using Webpack Module Federation, engineering resilient backend microservices for high-volume financial transaction processing, and architecting high-performance analytics dashboards with real-time FX rate visualizations.
           </p>
           <p>
-            When I'm not configuring backend scripts, I enjoy reviewing modern frontends, building progressive APIs, and participating in tech mentorship sessions.
+            Beyond engineering, I take pride in leading cross-functional teams, mentoring engineers, and translating complex business compliance workflows into scalable, maintainable technical solutions.
           </p>
         </div>
 
@@ -69,9 +69,9 @@ const About: React.FC = () => {
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
-            <h4 className="font-bold text-sm uppercase text-cyan-400 tracking-wider mb-3">Cloud / Infra</h4>
+            <h4 className="font-bold text-sm uppercase text-cyan-400 tracking-wider mb-3">Tools & Infra</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.cloud.map((s) => <li key={s}>{s}</li>)}
+              {PORTFOLIO_SKILLS.tools.map((s) => <li key={s}>{s}</li>)}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">

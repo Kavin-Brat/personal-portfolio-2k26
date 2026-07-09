@@ -20,7 +20,7 @@ const ContactSection: React.FC = () => {
         {/* Contact info cards */}
         <div className="md:col-span-5 space-y-6 text-left">
           <p className="text-slate-650 dark:text-slate-400 text-base sm:text-lg">
-            Have a system to build or want to chat about cloud solutions? I am always happy to explore new collaborations.
+            Have a fintech platform to build or want to collaborate on enterprise solutions? I'm always open to new opportunities and conversations.
           </p>
 
           <div className="space-y-4">
@@ -45,7 +45,7 @@ const ContactSection: React.FC = () => {
               <div>
                 <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-450 uppercase">Current Location</h4>
                 <p className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100">
-                  Puducherry, India
+                  Bangalore, Karnataka, India
                 </p>
               </div>
             </div>

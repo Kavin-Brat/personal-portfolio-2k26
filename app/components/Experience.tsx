@@ -27,6 +27,7 @@ const Experience: React.FC = () => {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 {job.role} <span className="text-slate-450 dark:text-slate-550 font-medium">@</span> <span className="text-indigo-400">{job.company}</span>
               </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-500 font-medium">{job.location}</p>
               
               <ul className="mt-4 space-y-2 list-disc list-outside pl-4 text-slate-650 dark:text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
                 {job.description.map((desc, dIdx) => (

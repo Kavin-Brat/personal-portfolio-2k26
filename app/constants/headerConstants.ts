@@ -1,4 +1,4 @@
-export const BRAND = "Kavin";
+export const BRAND = "Kavin Barath";
 
 export const NAV_ITEMS: Array<{ label: string; href: string }> = [
   { label: "Home", href: "/" },

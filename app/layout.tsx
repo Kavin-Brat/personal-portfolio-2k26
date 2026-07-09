@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kavin | Solution Architect & Full Stack Developer",
-  description: "Personal portfolio of Kavin, showcasing expertise in Full Stack Development, FinTech, and cloud solutions.",
+  title: "Kavin Barath | Senior Software Engineer",
+  description: "Personal portfolio of Kavin Barath S, Senior Software Engineer with 5 years of experience in React.js, Node.js, Micro Frontend architecture, and enterprise fintech solutions.",
 };
 
 export default function RootLayout({

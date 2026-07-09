@@ -15,17 +15,17 @@ const Hero: React.FC = () => {
       <div className="flex-1 space-y-6 text-left">
         <div className="space-y-2">
           <h2 className="text-sm font-semibold tracking-widest text-amber-500 uppercase font-sans animate-[fadeIn_0.5s_ease-out]">
-            Welcome to my portfolio
+            Welcome to Kavin Barath's Portfolio
           </h2>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Hi, I'm <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">Kavin</span>
+            Hi, I'm <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">Kavin Barath</span>
           </h1>
           <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-350">
-            Solution Architect & Full Stack Developer
+            Senior Software Engineer · Full Stack Developer
           </p>
         </div>
         <p className="text-slate-600 dark:text-slate-400 max-w-lg text-base sm:text-lg leading-relaxed font-sans">
-          I am a software engineer specializing in building high-performance, distributed cloud applications. From fintech microservices to responsive developer portals, I focus on writing maintainable, clean code that translates business needs into functional solutions.
+          Senior Full-Stack Engineer with 5 years of experience building enterprise-level fintech applications using React.js and Node.js. Specializing in Micro Frontend architecture, high-volume transaction systems, and real-time financial dashboards.
         </p>
         
         <div className="flex flex-wrap items-center gap-4 pt-2">
