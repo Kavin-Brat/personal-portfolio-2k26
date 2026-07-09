@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
+    <html lang="en" data-theme="dark" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
       <body className="antialiased min-h-screen text-slate-100 flex flex-col relative">
         <div id="stars1" className="star-layer"></div>
         <div id="stars2" className="star-layer"></div>

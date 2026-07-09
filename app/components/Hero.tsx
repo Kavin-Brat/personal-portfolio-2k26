@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { SOCIAL_LINKS } from "../constants/portfolioConstants";
 import { GitHubIcon, LinkedInIcon, EmailIcon, DownloadIcon } from "./Icons";
 import OrbitVisual from "./OrbitVisual";
@@ -29,14 +28,14 @@ const Hero: React.FC = () => {
         </p>
         
         <div className="flex flex-wrap items-center gap-4 pt-2">
-          <Link
+          <a
             href={SOCIAL_LINKS.resume}
-            target="_blank"
+            download="KavinBarathS_Resume.pdf"
             className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-slate-200 shadow-lg hover:translate-y-[-2px] transition-all"
           >
             <DownloadIcon />
             Resume
-          </Link>
+          </a>
           <div className="flex items-center gap-3">
             <a
               href={SOCIAL_LINKS.github}

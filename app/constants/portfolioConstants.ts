@@ -25,7 +25,7 @@ export const SOCIAL_LINKS = {
   github: "https://github.com/Kavin-Brat",
   linkedin: "https://www.linkedin.com/in/kavin-barath/",
   email: "kavinbarath66@gmail.com",
-  resume: "/Kavin-Resume.pdf",
+  resume: "/KavinBarathS_Resume.pdf",
 };
 
 export const PORTFOLIO_SKILLS: PortfolioSkills = {
