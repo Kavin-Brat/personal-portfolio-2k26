@@ -92,7 +92,7 @@ const Header: React.FC = () => {
 
           {/* Right items */}
           <div className="flex items-center gap-4">
-            <span className="relative z-50">
+            <span className="relative z-50 hidden md:inline-flex">
               <ThemeToggle />
             </span>
 
@@ -143,6 +143,13 @@ const Header: React.FC = () => {
             {item.label}
           </Link>
         ))}
+        {/* Mobile Theme Toggle in Sidebar */}
+        <div className="mt-auto pt-6 border-t border-slate-200/10 dark:border-white/5 flex items-center justify-between">
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Theme
+          </span>
+          <ThemeToggle />
+        </div>
       </div>
     </>
   );
