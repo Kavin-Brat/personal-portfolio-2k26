@@ -19,14 +19,14 @@ const Hero: React.FC = () => {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Hi, I'm <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">Kavin Barath</span>
           </h1>
-          <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-350">
+          <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200">
             Senior Software Engineer · Full Stack Developer
           </p>
         </div>
         <p className="text-slate-600 dark:text-slate-400 max-w-lg text-base sm:text-lg leading-relaxed font-sans">
           Senior Full-Stack Engineer with 5 years of experience building enterprise-level fintech applications using React.js and Node.js. Specializing in Micro Frontend architecture, high-volume transaction systems, and real-time financial dashboards.
         </p>
-        
+
         <div className="flex flex-wrap items-center gap-4 pt-2">
           <a
             href={SOCIAL_LINKS.resume}

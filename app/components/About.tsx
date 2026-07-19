@@ -16,7 +16,7 @@ const About: React.FC = () => {
 
       <div className="grid md:grid-cols-12 gap-12 items-start">
         {/* Description */}
-        <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-350 text-left text-base sm:text-lg leading-relaxed">
+        <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-400 text-left text-base sm:text-lg leading-relaxed">
           <p>
             Senior Full-Stack Engineer with <strong>5 years of experience</strong> specializing in building and scaling enterprise-level applications using React.js and Node.js. My core philosophy centers around clean code, project ownership, and direct client engagement.
           </p>
