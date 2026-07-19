@@ -1,5 +1,5 @@
 import React from "react";
-import { PORTFOLIO_SKILLS, DOMAIN_EXPERTISE } from "../constants/portfolioConstants";
+import { PORTFOLIO_SKILLS, DOMAIN_EXPERTISE } from "../constants/portfolioConstants"; import { SkillIcon } from "./Icons";
 
 const About: React.FC = () => {
   return (
@@ -18,13 +18,10 @@ const About: React.FC = () => {
         {/* Description */}
         <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-400 text-left text-base sm:text-lg leading-relaxed">
           <p>
-            Senior Full-Stack Engineer with <strong>5 years of experience</strong> specializing in building and scaling enterprise-level applications using React.js and Node.js. My core philosophy centers around clean code, project ownership, and direct client engagement.
+            Senior Full-Stack Engineer with <strong>5 years of experience</strong> specializing in building and scaling enterprise-level applications using React.js and Node.js. My core philosophy centers around writing clean, maintainable code, with deep expertise in Micro Frontend architectures, real-time analytics, and high-performance dashboards with live FX rate visualizations.
           </p>
           <p>
-            I specialize in <strong>Micro Frontend (MFE) architecture</strong> using Webpack Module Federation, engineering resilient backend microservices for high-volume financial transaction processing, and architecting high-performance analytics dashboards with real-time FX rate visualizations.
-          </p>
-          <p>
-            Beyond engineering, I take pride in leading cross-functional teams, mentoring engineers, and translating complex business compliance workflows into scalable, maintainable technical solutions.
+            Beyond engineering, I thrive on leading teams, driving code quality through rigorous reviews, and partnering directly with product and business stakeholders to translate complex compliance workflows into scalable, maintainable technical solutions.
           </p>
         </div>
 
@@ -53,31 +50,41 @@ const About: React.FC = () => {
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-amber-500 tracking-wider mb-3">Languages</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.languages.map((s) => <li key={s}>{s}</li>)}
+                {PORTFOLIO_SKILLS.languages.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+                ))}
             </ul>
           </div>
-          <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
+          <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-spate-900/5 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-indigo-400 tracking-wider mb-3">Frameworks</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.frameworks.map((s) => <li key={s}>{s}</li>)}
+                {PORTFOLIO_SKILLS.frameworks.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+                ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-emerald-400 tracking-wider mb-3">Databases</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.databases.map((s) => <li key={s}>{s}</li>)}
+                {PORTFOLIO_SKILLS.databases.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+                ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-cyan-400 tracking-wider mb-3">Tools & Infra</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.tools.map((s) => <li key={s}>{s}</li>)}
+                {PORTFOLIO_SKILLS.tools.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+                ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-purple-400 tracking-wider mb-3">Concepts</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-              {PORTFOLIO_SKILLS.concepts.map((s) => <li key={s}>{s}</li>)}
+                {PORTFOLIO_SKILLS.concepts.map((skill) => (
+                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+                ))}
             </ul>
           </div>
         </div>

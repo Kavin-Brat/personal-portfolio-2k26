@@ -36,3 +36,32 @@ export const ArrowLeftIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) =>
     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
   </svg>
 );
+export const SkillIcon: React.FC<{ name: string; icon?: string }> = ({ name, icon }) => {
+  // Map skill names to shorthand identifiers used by skillicons.dev
+  const map: Record<string, string> = {
+    "JavaScript": "javascript",
+    "TypeScript": "typescript",
+    "HTML": "html",
+    "CSS": "css",
+    "React.js": "react",
+    "Node.js": "nodejs",
+    "Express.js": "express",
+    "Vite": "vite",
+    "Material UI": "materialui",
+    "Tailwind CSS": "tailwindcss",
+    "Redux": "redux",
+    "MySQL": "mysql",
+    "Next.js": "nextjs",
+    "GitHub": "github",
+    // other mappings remain unchanged
+  };
+  const slug = icon ?? map[name] ?? name.toLowerCase().replace(/\s+/g, "");
+  const src = `https://skillicons.dev/icons?i=${slug}`;
+  return (
+    <img
+      src={src}
+      alt={name}
+      className="inline-block w-5 h-5 mr-1 align-middle"
+    />
+  );
+};

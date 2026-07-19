@@ -13,12 +13,17 @@ export interface Project {
   description: string;
 }
 
+export interface SkillItem {
+  name: string;
+  icon?: string; // optional icon slug
+}
+
 export interface PortfolioSkills {
-  languages: string[];
-  frameworks: string[];
-  databases: string[];
-  tools: string[];
-  concepts: string[];
+  languages: SkillItem[];
+  frameworks: SkillItem[];
+  databases: SkillItem[];
+  tools: SkillItem[];
+  concepts: SkillItem[];
 }
 
 export const SOCIAL_LINKS = {
@@ -29,12 +34,47 @@ export const SOCIAL_LINKS = {
 };
 
 export const PORTFOLIO_SKILLS: PortfolioSkills = {
-  languages: ["JavaScript", "TypeScript", "HTML", "CSS", "SQL"],
-  frameworks: ["React.js", "Node.js", "Express.js", "Vite", "Material UI", "Tailwind CSS", "Redux"],
-  databases: ["PostgreSQL", "REST APIs"],
-  tools: ["Webpack Module Federation", "Nginx", "API Gateway", "Git"],
-  concepts: ["Micro Frontend (MFE)", "Microservices", "RESTful APIs", "Monolithic Migration", "Code Reviews & Standards"],
-};
+  languages: [
+    { name: "JavaScript", icon: "javascript" },
+    { name: "TypeScript", icon: "typescript" },
+    { name: "HTML", icon: "html" },
+    { name: "CSS", icon: "css" },
+    { name: "SQL", icon: "mysql" }, // custom dolphin icon handled in SkillIcon
+    { name: "Ruby", icon: "ruby" },
+  ],
+  frameworks: [
+    { name: "React.js", icon: "react" },
+    { name: "Node.js", icon: "nodejs" },
+    { name: "Express.js", icon: "express" },
+    { name: "Vite", icon: "vite" },
+    { name: "Material UI", icon: "materialui" },
+    { name: "Tailwind CSS", icon: "tailwindcss" },
+    { name: "Redux", icon: "redux" },
+    { name: "Angular", icon: "angular" },
+    { name: "Next.js", icon: "nextjs" },
+  ],
+  databases: [
+    { name: "PostgreSQL", icon: "postgresql" },
+    { name: "MySQL", icon: "mysql" },
+    { name: "MongoDB", icon: "mongodb" },
+  ],
+  tools: [
+    { name: "Webpack Module Federation", icon: "webpack" },
+    { name: "Nginx", icon: "nginx" },
+    { name: "API Gateway", icon: "aws" },
+    { name: "Git", icon: "git" },
+  ],
+  concepts: [
+    { name: "Micro Frontend (MFE)", icon: "github" },
+    { name: "Microservices", icon: "github" },
+    { name: "API Design", icon: "github" },
+    { name: "Security", icon: "github" },
+    { name: "Clean Architecture", icon: "github" },
+    { name: "Performance Optimization", icon: "github" },
+    { name: "Code Reviews & Standards", icon: "github" },
+    { name: "System Design", icon: "github" },
+  ],
+} as const;
 
 export const DOMAIN_EXPERTISE: string[] = [
   "FinTech & Global Remittance",
