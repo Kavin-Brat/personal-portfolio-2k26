@@ -126,7 +126,7 @@ const Header: React.FC = () => {
 
       <div
         className={`fixed inset-y-0 right-0 w-64 bg-slate-100/90 dark:bg-slate-950/95 backdrop-blur-xl transform ${
-          isOpen ? "translate-x-0" : "translate-x-full"
+          isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none invisible"
         } transition-transform duration-300 ease-in-out z-40 border-l border-slate-200/20 dark:border-white/5 flex flex-col p-6 pt-24 gap-4 md:hidden`}
       >
         {NAV_ITEMS.map((item) => (
