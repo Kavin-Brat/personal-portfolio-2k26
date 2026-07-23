@@ -1,42 +1,62 @@
-import React from "react";
-import Image from "next/image";
+"use client";
 
+import React, { useState, useCallback } from "react";
+import { CentralAvatar } from "./CentralAvatar";
+import { SkillNode } from "./SkillNode";
+import { TECH_SKILLS } from "../constants/orbitSkills";
+import { TechSkill } from "../types/orbit";
+
+/**
+ * OrbitVisual Component
+ * 
+ * Interactive Hero section visual featuring an orbiting galaxy of tech skills
+ * surrounding a central profile picture. Supports hover-to-pause animations,
+ * high-resolution colored brand icons, and rich animated popover tooltips.
+ */
 const OrbitVisual: React.FC = () => {
+  const [activeSkill, setActiveSkill] = useState<TechSkill | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Memoized event handlers to prevent unnecessary child re-renders
+  const handleNodeMouseEnter = useCallback((skill: TechSkill) => {
+    setIsPaused(true);
+    setActiveSkill(skill);
+  }, []);
+
+  const handleNodeMouseLeave = useCallback(() => {
+    setIsPaused(false);
+    setActiveSkill(null);
+  }, []);
+
+  const handleNodeClick = useCallback((skill: TechSkill) => {
+    setActiveSkill((prev) => (prev?.id === skill.id ? null : skill));
+  }, []);
+
   return (
-    <div className="flex-1 flex items-center justify-center relative w-full max-w-[400px] md:max-w-[480px] lg:max-w-[540px] aspect-square">
-      {/* Background glow behind central sphere */}
-      <div className="absolute inset-0 rounded-full bg-indigo-500/10 dark:bg-indigo-500/5 blur-3xl ml-4" />
+    <div className="flex-1 flex items-center justify-center relative w-full max-w-[400px] md:max-w-[480px] lg:max-w-[540px] aspect-square select-none">
+      {/* Background ambient glow behind central sphere */}
+      <div className="absolute inset-0 rounded-full bg-indigo-500/10 dark:bg-indigo-500/5 blur-3xl ml-4 pointer-events-none" />
 
+      {/* Central Profile Avatar Component */}
+      <CentralAvatar
+        imageSrc="/kavin_profile_pic.png"
+        altText="Kavin Barath"
+      />
 
-      {/* Central Sphere */}
-      <div className="relative w-[56%] h-[56%] rounded-full border-3 border-slate-300 dark:border-slate-800/80 bg-white dark:bg-slate-950 shadow-[0_0_40px_rgba(99,102,241,0.25)] dark:shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden group z-10 cursor-pointer">
-        <Image
-          src="/kavin_profile_pic.png"
-          alt="Kavin Barath"
-          fill
-          priority
-          className="object-cover object-top pointer-events-none"
+      {/* Orbiting Skill Nodes */}
+      {TECH_SKILLS.map((skill) => (
+        <SkillNode
+          key={skill.id}
+          skill={skill}
+          isActive={activeSkill?.id === skill.id}
+          isPaused={isPaused}
+          onMouseEnter={() => handleNodeMouseEnter(skill)}
+          onMouseLeave={handleNodeMouseLeave}
+          onClick={() => handleNodeClick(skill)}
         />
-        {/* Shine sweep effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none z-20" />
-      </div>
-
-      {/* Planet 1 on Orbit 1 */}
-      <div className="absolute w-[100%] h-[100%] animate-[spin_30s_linear_infinite] pointer-events-none">
-        <div className="absolute top-[8%] left-[78%] w-5 h-5 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 shadow-md" />
-      </div>
-
-      {/* Planet 2 on Orbit 2 */}
-      <div className="absolute w-[87%] h-[87%] animate-[spin_18s_linear_infinite_reverse] pointer-events-none">
-        <div className="absolute bottom-[2%] left-[15%] w-4.5 h-4.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shadow-md" />
-      </div>
-
-      {/* Planet 3 on Orbit 3 */}
-      <div className="absolute w-[74%] h-[74%] animate-[spin_12s_linear_infinite] pointer-events-none">
-        <div className="absolute top-[84%] right-[22%] w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 shadow-inner" />
-      </div>
+      ))}
     </div>
   );
 };
 
-export default OrbitVisual;
+export default React.memo(OrbitVisual);
