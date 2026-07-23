@@ -13,9 +13,6 @@ const Hero: React.FC = () => {
     >
       <div className="flex-1 space-y-6 text-left">
         <div className="space-y-2">
-          <h2 className="text-sm font-semibold tracking-widest text-amber-500 uppercase font-sans animate-[fadeIn_0.5s_ease-out]">
-            Welcome to Kavin Barath's Portfolio
-          </h2>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Hi, I'm <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">Kavin Barath</span>
           </h1>
