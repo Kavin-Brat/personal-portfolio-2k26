@@ -11,6 +11,8 @@ export interface TechSkill {
   orbitClass: string;
   positionClass: string;
   svgIcon: React.ReactNode;
+  tooltipClass?: string;
+  arrowClass?: string;
 }
 
 interface SkillNodeProps {
@@ -26,7 +28,7 @@ interface SkillNodeProps {
  * SkillNode Component
  * 
  * Renders an individual orbiting tech skill node with brand icon,
- * hover scaling animation, and animated popover tooltip badge.
+ * hover scaling animation, and responsive tooltip badge popover.
  */
 export const SkillNode: React.FC<SkillNodeProps> = React.memo(
   ({ skill, isActive, isPaused, onMouseEnter, onMouseLeave, onClick }) => {
@@ -51,9 +53,11 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
             {skill.svgIcon}
           </div>
 
-          {/* Hover Tooltip Badge */}
+          {/* Hover Tooltip Badge (responsive alignments to prevent horizontal screen cutoffs) */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-3 w-44 p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+            className={`absolute bottom-full mb-3 w-44 p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+              skill.tooltipClass || "left-1/2 -translate-x-1/2"
+            } ${
               isActive
                 ? "opacity-100 translate-y-0 scale-100"
                 : "opacity-0 translate-y-2 scale-95"
@@ -73,7 +77,9 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
               <span className="font-semibold text-indigo-600 dark:text-indigo-400">{skill.level}</span>
             </div>
             {/* Tooltip Arrow */}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-white dark:border-t-slate-900" />
+            <div className={`absolute top-full -mt-px border-4 border-transparent border-t-white dark:border-t-slate-900 ${
+              skill.arrowClass || "left-1/2 -translate-x-1/2"
+            }`} />
           </div>
         </div>
       </div>

@@ -40,6 +40,8 @@ export const TECH_SKILLS: TechSkill[] = [
     badgeBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
     orbitClass: "w-[84%] h-[84%] animate-[spin_34s_linear_infinite]",
     positionClass: "top-1/2 right-0 -translate-y-1/2",
+    tooltipClass: "right-[-8px] translate-x-0 md:left-1/2 md:-translate-x-1/2",
+    arrowClass: "right-4 translate-x-0 md:left-1/2 md:-translate-x-1/2",
     svgIcon: (
       <img
         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
@@ -60,6 +62,8 @@ export const TECH_SKILLS: TechSkill[] = [
     badgeBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
     orbitClass: "w-[76%] h-[76%] animate-[spin_27s_linear_infinite]",
     positionClass: "top-1/2 left-0 -translate-y-1/2",
+    tooltipClass: "left-[-8px] translate-x-0 md:left-1/2 md:-translate-x-1/2",
+    arrowClass: "left-4 translate-x-0 md:left-1/2 md:-translate-x-1/2",
     svgIcon: (
       <img
         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"

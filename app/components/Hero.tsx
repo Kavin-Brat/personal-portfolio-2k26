@@ -69,13 +69,13 @@ const Hero: React.FC = () => {
               Kavin Barath
             </span>
           </h1>
-          <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+          <div className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
             <span>Senior Software Engineer</span>
-            <span className="text-amber-500 font-bold">·</span>
+            <span className="hidden sm:inline text-amber-500 font-bold">·</span>
             <span className="inline-block text-amber-500 dark:text-amber-400 font-semibold min-h-[1.5em] border-r-2 border-amber-400 animate-pulse pr-1">
               {displayedText}
             </span>
-          </p>
+          </div>
         </div>
 
         <p className="text-slate-600 dark:text-slate-400 max-w-lg text-base sm:text-lg leading-relaxed font-sans">
