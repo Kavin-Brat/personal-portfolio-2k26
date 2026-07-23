@@ -1,5 +1,17 @@
 import React from "react";
-import { TechSkill } from "../types/orbit";
+
+export interface TechSkill {
+  id: string;
+  name: string;
+  category: string;
+  level: string;
+  experience: string;
+  color: string;
+  badgeBg: string;
+  orbitClass: string;
+  positionClass: string;
+  svgIcon: React.ReactNode;
+}
 
 interface SkillNodeProps {
   skill: TechSkill;

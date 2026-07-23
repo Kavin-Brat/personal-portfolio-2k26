@@ -1,5 +1,5 @@
 import React from "react";
-import { TechSkill } from "../types/orbit";
+import { TechSkill } from "../components/SkillNode";
 
 /**
  * TECH_SKILLS Data Registry

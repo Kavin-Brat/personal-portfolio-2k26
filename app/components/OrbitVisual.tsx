@@ -2,9 +2,8 @@
 
 import React, { useState, useCallback } from "react";
 import { CentralAvatar } from "./CentralAvatar";
-import { SkillNode } from "./SkillNode";
+import { SkillNode, TechSkill } from "./SkillNode";
 import { TECH_SKILLS } from "../constants/orbitSkills";
-import { TechSkill } from "../types/orbit";
 
 /**
  * OrbitVisual Component
