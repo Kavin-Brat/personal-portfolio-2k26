@@ -15,7 +15,7 @@ interface CentralAvatarProps {
 export const CentralAvatar: React.FC<CentralAvatarProps> = React.memo(
   ({ imageSrc, altText }) => {
     return (
-      <div className="relative w-[48%] h-[48%] rounded-full border-3 border-slate-300 dark:border-slate-800/80 bg-white dark:bg-slate-950 shadow-[0_0_40px_rgba(99,102,241,0.25)] dark:shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden group z-10 cursor-pointer">
+      <div className="relative w-[48%] h-[48%] rounded-full border-3 border-slate-300 dark:border-slate-800/80 bg-white dark:bg-slate-950 shadow-[0_10px_35px_rgba(0,0,0,0.15)] dark:shadow-[0_0_50px_rgba(99,102,241,0.15)] flex items-center justify-center overflow-hidden group z-10 cursor-pointer">
         <Image
           src={imageSrc}
           alt={altText}
