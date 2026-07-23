@@ -22,7 +22,7 @@ const OrbitVisual: React.FC = () => {
           alt="Kavin Barath"
           fill
           priority
-          className="object-cover pointer-events-none"
+          className="object-cover object-top pointer-events-none"
         />
         {/* Shine sweep effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out pointer-events-none z-20" />
