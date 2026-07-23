@@ -94,31 +94,51 @@ const Hero: React.FC = () => {
           </a>
 
           <div className="flex items-center gap-3">
-            <a
-              href={SOCIAL_LINKS.github}
-              target="_blank"
-              rel="noreferrer"
-              className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all"
-              aria-label="GitHub Profile"
-            >
-              <GitHubIcon />
-            </a>
-            <a
-              href={SOCIAL_LINKS.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedInIcon />
-            </a>
-            <a
-              href={`mailto:${SOCIAL_LINKS.email}`}
-              className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all"
-              aria-label="Email Contact"
-            >
-              <EmailIcon />
-            </a>
+            {/* GitHub Tooltip */}
+            <div className="relative group">
+              <a
+                href={SOCIAL_LINKS.github}
+                target="_blank"
+                rel="noreferrer"
+                className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all block"
+                aria-label="GitHub Profile"
+              >
+                <GitHubIcon />
+              </a>
+              <div className="hidden md:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-2 py-1 text-[10px] font-semibold uppercase tracking-wider rounded bg-slate-900 text-white dark:bg-white dark:text-slate-900 border border-slate-800 dark:border-slate-200 shadow-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
+                GitHub
+              </div>
+            </div>
+
+            {/* LinkedIn Tooltip */}
+            <div className="relative group">
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all block"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedInIcon />
+              </a>
+              <div className="hidden md:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-2 py-1 text-[10px] font-semibold uppercase tracking-wider rounded bg-slate-900 text-white dark:bg-white dark:text-slate-900 border border-slate-800 dark:border-slate-200 shadow-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
+                LinkedIn
+              </div>
+            </div>
+
+            {/* Email Tooltip */}
+            <div className="relative group">
+              <a
+                href={`mailto:${SOCIAL_LINKS.email}`}
+                className="p-3 rounded-full border border-slate-300 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 hover:bg-amber-500/10 dark:hover:bg-amber-500/10 transition-all block"
+                aria-label="Email Contact"
+              >
+                <EmailIcon />
+              </a>
+              <div className="hidden md:block absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-max px-2 py-1 text-[10px] font-semibold uppercase tracking-wider rounded bg-slate-900 text-white dark:bg-white dark:text-slate-900 border border-slate-800 dark:border-slate-200 shadow-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-50">
+                Email
+              </div>
+            </div>
           </div>
         </div>
       </div>
