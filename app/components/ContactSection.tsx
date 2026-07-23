@@ -25,26 +25,26 @@ const ContactSection: React.FC = () => {
 
           <div className="space-y-4">
             {/* Email item */}
-            <div className="p-4 rounded-xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 dark:bg-slate-900/5 flex items-center gap-4 hover:border-amber-500/40 transition-colors">
-              <div className="p-3 bg-amber-500/10 text-amber-500 rounded-lg">
+            <div className="group p-4 rounded-xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 dark:bg-slate-900/5 flex items-center gap-4 hover:border-amber-500/40 transition-colors">
+              <div className="p-3 bg-amber-500/10 text-slate-500 dark:text-slate-400 group-hover:text-amber-500 rounded-lg transition-colors">
                 <EmailIcon />
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-450 uppercase">Email</h4>
-                <a href={`mailto:${SOCIAL_LINKS.email}`} className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100 hover:text-amber-500">
+                <a href={`mailto:${SOCIAL_LINKS.email}`} className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100 group-hover:text-amber-500 transition-colors">
                   {SOCIAL_LINKS.email}
                 </a>
               </div>
             </div>
 
             {/* Location items */}
-            <div className="p-4 rounded-xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 dark:bg-slate-900/5 flex items-center gap-4 hover:border-amber-500/40 transition-colors">
-              <div className="p-3 bg-amber-500/10 rounded-lg">
+            <div className="group p-4 rounded-xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 dark:bg-slate-900/5 flex items-center gap-4 hover:border-amber-500/40 transition-colors">
+              <div className="p-3 bg-amber-500/10 text-slate-500 dark:text-slate-400 group-hover:text-amber-500 rounded-lg transition-colors">
                 <LocationIcon />
               </div>
               <div>
                 <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-450 uppercase">Current Location</h4>
-                <p className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100">
+                <p className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100 group-hover:text-amber-500 transition-colors">
                   Bangalore, Karnataka, India
                 </p>
               </div>
