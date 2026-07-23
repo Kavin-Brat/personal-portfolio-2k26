@@ -22,7 +22,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full p-6 sm:p-8 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 dark:bg-slate-900/10 backdrop-blur-sm">
+    <div className="w-full p-6 sm:p-8 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 backdrop-blur-sm">
       <form onSubmit={handleSubmit} className="space-y-6 text-left">
         <div className="grid sm:grid-cols-2 gap-6">
           <div className="space-y-2">

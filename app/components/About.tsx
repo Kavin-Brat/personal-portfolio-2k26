@@ -26,7 +26,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Domain Expertise */}
-        <div className="md:col-span-5 p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/50 dark:bg-slate-900/15 backdrop-blur-sm space-y-6 text-left">
+        <div className="md:col-span-5 p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 backdrop-blur-sm space-y-6 text-left">
           <h3 className="font-bold text-lg text-slate-850 dark:text-white">
             Domain Expertise
           </h3>
