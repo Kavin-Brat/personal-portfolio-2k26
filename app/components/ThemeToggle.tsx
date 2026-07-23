@@ -2,13 +2,21 @@
 
 import React, { useEffect, useState } from "react";
 
+/**
+ * ThemeToggle Component
+ * 
+ * Interactive floating action button toggling light & dark modes.
+ * Synchronizes state dynamically across multiple toggle instances on the same page.
+ */
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  // Default to light theme as the initial base default
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
+  // Load saved theme on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-      const initialTheme = saved || "dark";
+      const initialTheme = saved || "light";
       setTheme(initialTheme);
       document.documentElement.setAttribute("data-theme", initialTheme);
       if (initialTheme === "dark") {
@@ -17,10 +25,26 @@ export default function ThemeToggle() {
         document.documentElement.classList.remove("dark");
       }
     } catch (e) {
-      // ignore
+      // ignore SSR or localStorage access blocks
     }
   }, []);
 
+  // Listen to synchronisation events from other toggles
+  useEffect(() => {
+    const handleSync = (e: Event) => {
+      const customEvent = e as CustomEvent<"light" | "dark">;
+      if (customEvent.detail && customEvent.detail !== theme) {
+        setTheme(customEvent.detail);
+      }
+    };
+
+    window.addEventListener("theme-toggle-sync", handleSync);
+    return () => {
+      window.removeEventListener("theme-toggle-sync", handleSync);
+    };
+  }, [theme]);
+
+  // Handle local state theme writes
   useEffect(() => {
     try {
       document.documentElement.setAttribute("data-theme", theme);
@@ -35,14 +59,22 @@ export default function ThemeToggle() {
     }
   }, [theme]);
 
-  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  // Click handler to toggle theme and broadcast sync state
+  const toggle = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent event bubbling on mobile side menu
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    window.dispatchEvent(
+      new CustomEvent("theme-toggle-sync", { detail: nextTheme })
+    );
+  };
 
   return (
     <button
       className="theme-toggle"
       onClick={toggle}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
-      title={theme === "dark" ? "Light" : "Dark"}
+      title={theme === "dark" ? "Light Mode" : "Dark Mode"}
     >
       {theme === "dark" ? (
         // sun icon (shows when currently dark, to switch to light)
