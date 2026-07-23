@@ -8,14 +8,13 @@ export default function ThemeToggle() {
   useEffect(() => {
     try {
       const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-      if (saved) {
-        setTheme(saved);
-        document.documentElement.setAttribute("data-theme", saved);
+      const initialTheme = saved || "dark";
+      setTheme(initialTheme);
+      document.documentElement.setAttribute("data-theme", initialTheme);
+      if (initialTheme === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
-        // Default to dark mode
-        setTheme("dark");
-        document.documentElement.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.remove("dark");
       }
     } catch (e) {
       // ignore
@@ -25,6 +24,11 @@ export default function ThemeToggle() {
   useEffect(() => {
     try {
       document.documentElement.setAttribute("data-theme", theme);
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
       localStorage.setItem("theme", theme);
     } catch (e) {
       // ignore

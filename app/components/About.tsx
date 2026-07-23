@@ -45,46 +45,46 @@ const About: React.FC = () => {
 
       {/* Technical Skills Grid */}
       <div className="mt-8 space-y-6 text-left">
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Tech Skills Inventory</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Technical Skills</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-amber-500 tracking-wider mb-3">Languages</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-                {PORTFOLIO_SKILLS.languages.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
-                ))}
+              {PORTFOLIO_SKILLS.languages.map((skill) => (
+                <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+              ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-indigo-400 tracking-wider mb-3">Frameworks</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-                {PORTFOLIO_SKILLS.frameworks.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
-                ))}
+              {PORTFOLIO_SKILLS.frameworks.map((skill) => (
+                <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+              ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-emerald-400 tracking-wider mb-3">Databases</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-                {PORTFOLIO_SKILLS.databases.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
-                ))}
+              {PORTFOLIO_SKILLS.databases.map((skill) => (
+                <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+              ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-cyan-400 tracking-wider mb-3">Tools & Infra</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-                {PORTFOLIO_SKILLS.tools.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
-                ))}
+              {PORTFOLIO_SKILLS.tools.map((skill) => (
+                <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+              ))}
             </ul>
           </div>
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-purple-400 tracking-wider mb-3">Concepts</h4>
             <ul className="space-y-1.5 text-sm text-slate-650 dark:text-slate-400 font-medium">
-                {PORTFOLIO_SKILLS.concepts.map((skill) => (
-                  <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
-                ))}
+              {PORTFOLIO_SKILLS.concepts.map((skill) => (
+                <li key={skill.name} className="flex items-center gap-2"><SkillIcon name={skill.name} icon={skill.icon} />{skill.name}</li>
+              ))}
             </ul>
           </div>
         </div>
