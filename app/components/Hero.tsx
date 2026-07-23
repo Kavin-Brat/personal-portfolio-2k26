@@ -1,11 +1,48 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { SOCIAL_LINKS } from "../constants/portfolioConstants";
 import { GitHubIcon, LinkedInIcon, EmailIcon, DownloadIcon } from "./Icons";
 import OrbitVisual from "./OrbitVisual";
 
+const ROLES = [
+  "Full Stack Developer",
+  "Frontend Engineer",
+  "Backend Architect",
+];
+
 const Hero: React.FC = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = ROLES[roleIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      if (displayedText.length < currentRole.length) {
+        timer = setTimeout(() => {
+          setDisplayedText(currentRole.slice(0, displayedText.length + 1));
+        }, 90);
+      } else {
+        // Pause at full word before deleting
+        timer = setTimeout(() => setIsDeleting(true), 2000);
+      }
+    } else {
+      if (displayedText.length > 0) {
+        timer = setTimeout(() => {
+          setDisplayedText(currentRole.slice(0, displayedText.length - 1));
+        }, 50);
+      } else {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, roleIndex]);
+
   return (
     <section
       id="home"
@@ -16,8 +53,12 @@ const Hero: React.FC = () => {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Hi, I'm <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">Kavin Barath</span>
           </h1>
-          <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200">
-            Senior Software Engineer · Full Stack Developer
+          <p className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
+            <span>Senior Software Engineer</span>
+            <span className="text-amber-500 font-bold">·</span>
+            <span className="inline-block text-amber-500 dark:text-amber-400 font-semibold min-h-[1.5em] border-r-2 border-amber-400 animate-pulse pr-1">
+              {displayedText}
+            </span>
           </p>
         </div>
         <p className="text-slate-600 dark:text-slate-400 max-w-lg text-base sm:text-lg leading-relaxed font-sans">
