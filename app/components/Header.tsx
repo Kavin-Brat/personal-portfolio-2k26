@@ -134,7 +134,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="md:fixed absolute top-0 left-0 w-full z-50 backdrop-blur-md border-b-[0.5px] border-slate-200/10 dark:border-white/5 bg-slate-100/40 dark:bg-slate-950/20 transition-all duration-300">
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b-[0.5px] border-slate-200/10 dark:border-white/5 bg-slate-100/40 dark:bg-slate-950/20 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between w-full">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold tracking-wider hover:opacity-80 transition-opacity" onClick={closeMenu}>
@@ -236,7 +236,7 @@ const Header: React.FC = () => {
       <div
         className={`fixed inset-y-0 right-0 w-64 bg-slate-100/90 dark:bg-slate-950/95 backdrop-blur-xl transform ${
           isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none invisible"
-        } transition-transform duration-300 ease-in-out z-50 border-l border-slate-200/20 dark:border-white/5 flex flex-col p-6 pt-24 gap-4 md:hidden`}
+        } transition-transform duration-300 ease-in-out z-45 border-l border-slate-200/20 dark:border-white/5 flex flex-col p-6 pt-24 gap-4 md:hidden`}
       >
         {NAV_ITEMS.map((item) => (
           <Link

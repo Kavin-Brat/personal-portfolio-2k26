@@ -81,7 +81,7 @@ export default function RootLayout({
           <div id="stars3" className="star-layer"></div>
           
           <Header />
-          <main className="flex-grow z-10 relative md:pt-20">
+          <main className="flex-grow z-10 relative pt-20">
             <ErrorBoundary name="Main Content Area">
               {children}
             </ErrorBoundary>
