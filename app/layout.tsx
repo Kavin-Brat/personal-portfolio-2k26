@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import CommandPaletteModal from "./components/CommandPaletteModal";
 import SecurityShield from "./components/SecurityShield";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import { OfflineToast } from "./components/OfflineToast";
-import { ToastContainer } from "./components/ToastContainer";
+import ClientProviders from "./components/ClientProviders";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -87,14 +85,8 @@ export default function RootLayout({
             </ErrorBoundary>
           </main>
           
-          {/* Global Developer Terminal & Command Menu Modal */}
-          <CommandPaletteModal />
-          
-          {/* Global Offline Network Toast Monitor */}
-          <OfflineToast />
-          
-          {/* Global Event-Bus Toast Alerts */}
-          <ToastContainer />
+          {/* Client-only dynamic providers and modal palette */}
+          <ClientProviders />
         </SecurityShield>
       </body>
     </html>
