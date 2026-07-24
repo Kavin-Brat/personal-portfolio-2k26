@@ -1,0 +1,29 @@
+# Next.js Static Export Routing and Security Configuration
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve direct files/folders if they exist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # If a corresponding .html file exists, serve it
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # Fallback non-existent paths to the 404 page
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^.*$ 404.html [L]
+</IfModule>
+
+# Security Headers Configuration (Moved from next.config.ts for Static Export compatibility)
+<IfModule mod_headers.c>
+  Header set X-DNS-Prefetch-Control "on"
+  Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+  Header set X-Frame-Options "DENY"
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.jsdelivr.net https://skillicons.dev; font-src 'self' data:; connect-src 'self' https://api.emailjs.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
+</IfModule>
