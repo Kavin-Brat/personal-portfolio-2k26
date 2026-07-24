@@ -84,6 +84,8 @@ export const TECH_SKILLS: TechSkill[] = [
     badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
     orbitClass: "w-[78%] h-[78%] animate-[spin_23s_linear_infinite]",
     positionClass: "bottom-0 left-1/2 -translate-x-1/2",
+    tooltipPositionClass: "top-full mt-3",
+    arrowPositionClass: "bottom-full -mb-px border-b-white dark:border-b-slate-900",
     svgIcon: (
       <img
         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
@@ -93,7 +95,7 @@ export const TECH_SKILLS: TechSkill[] = [
     ),
   },
 
-  // --- Orbit 5: AI Tools (Innermost Ring - 60% Radius, Clockwise 16s) ---
+  // --- Orbit 5: AI Tools (Innermost Ring - 72% Radius, Clockwise 18s) ---
   {
     id: "ai-tools",
     name: "Gemini • OpenAI • Claude",
@@ -102,7 +104,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "1+ Year",
     color: "from-blue-400 via-indigo-500 to-purple-500",
     badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    orbitClass: "w-[60%] h-[60%] animate-[spin_16s_linear_infinite]",
+    orbitClass: "w-[72%] h-[72%] animate-[spin_18s_linear_infinite]",
     positionClass: "top-0 left-1/2 -translate-x-1/2",
     svgIcon: (
       <img
@@ -112,7 +114,7 @@ export const TECH_SKILLS: TechSkill[] = [
       />
     ),
   },
-  // --- Orbit 6: Tailwind CSS (Innermost Ring - 60% Radius, Clockwise 16s) ---
+  // --- Orbit 6: Tailwind CSS (Innermost Ring - 72% Radius, Clockwise 18s) ---
   {
     id: "tailwind",
     name: "Tailwind CSS",
@@ -121,8 +123,10 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "4+ Years",
     color: "from-teal-400 to-cyan-500",
     badgeBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
-    orbitClass: "w-[60%] h-[60%] animate-[spin_16s_linear_infinite]",
+    orbitClass: "w-[72%] h-[72%] animate-[spin_18s_linear_infinite]",
     positionClass: "bottom-0 left-1/2 -translate-x-1/2",
+    tooltipPositionClass: "top-full mt-3",
+    arrowPositionClass: "bottom-full -mb-px border-b-white dark:border-b-slate-900",
     svgIcon: (
       <img
         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"

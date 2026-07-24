@@ -16,6 +16,8 @@ export interface TechSkill {
   levelLabel?: string;
   description?: string;
   tags?: string[];
+  tooltipPositionClass?: string;
+  arrowPositionClass?: string;
 }
 
 interface SkillNodeProps {
@@ -58,7 +60,9 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
 
           {/* Hover Tooltip Badge (responsive alignments to prevent horizontal screen cutoffs) */}
           <div
-            className={`absolute bottom-full mb-3 p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+            className={`absolute p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+              skill.tooltipPositionClass || "bottom-full mb-3"
+            } ${
               skill.description ? "w-60" : "w-44"
             } ${
               skill.tooltipClass || "left-1/2 -translate-x-1/2"
@@ -107,7 +111,9 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
             )}
             
             {/* Tooltip Arrow */}
-            <div className={`absolute top-full -mt-px border-4 border-transparent border-t-white dark:border-t-slate-900 ${
+            <div className={`absolute border-4 border-transparent ${
+              skill.arrowPositionClass || "top-full -mt-px border-t-white dark:border-t-slate-900"
+            } ${
               skill.arrowClass || "left-1/2 -translate-x-1/2"
             }`} />
           </div>
