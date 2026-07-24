@@ -10,6 +10,37 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [coords, setCoords] = useState<{ left: number; width: number } | null>(null);
+  const navRef = React.useRef<HTMLDivElement>(null);
+
+  // Update sliding pill coordinates dynamically
+  useEffect(() => {
+    const updateCoords = () => {
+      if (!navRef.current) return;
+      const activeLink = navRef.current.querySelector('[data-active="true"]') as HTMLElement;
+      if (activeLink) {
+        setCoords({
+          left: activeLink.offsetLeft,
+          width: activeLink.offsetWidth,
+        });
+      } else {
+        setCoords(null);
+      }
+    };
+
+    updateCoords();
+
+    const observer = new ResizeObserver(() => {
+      updateCoords();
+    });
+    if (navRef.current) {
+      observer.observe(navRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [activeHash]);
 
   useEffect(() => {
     if (pathname !== "/") {
@@ -92,7 +123,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 w-full z-50 backdrop-blur-md border-b-[0.5px] border-slate-200/10 dark:border-white/5 bg-slate-100/40 dark:bg-slate-950/20 transition-all duration-300">
+      <header className="md:fixed absolute top-0 left-0 w-full z-50 backdrop-blur-md border-b-[0.5px] border-slate-200/10 dark:border-white/5 bg-slate-100/40 dark:bg-slate-950/20 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between w-full">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold tracking-wider hover:opacity-80 transition-opacity" onClick={closeMenu}>
@@ -101,16 +132,32 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-1 bg-slate-900/5 dark:bg-white/5 p-1 border border-slate-900/10 dark:border-white/10 rounded-full">
+          <nav
+            ref={navRef}
+            className="hidden md:flex gap-1 bg-slate-900/5 dark:bg-white/5 p-1 border border-slate-900/10 dark:border-white/10 rounded-full relative"
+          >
+            {/* Sliding Pill Background */}
+            {coords && (
+              <div
+                className="absolute bg-slate-900 dark:bg-white/15 rounded-full transition-all duration-300 ease-out pointer-events-none"
+                style={{
+                  left: `${coords.left}px`,
+                  width: `${coords.width}px`,
+                  top: "4px",
+                  bottom: "4px",
+                }}
+              />
+            )}
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavLinkClick(e, item.href)}
-                className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                data-active={isActive(item.href)}
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 relative z-10 ${
                   isActive(item.href)
-                    ? "bg-slate-900 text-white dark:bg-white/15 dark:text-white border border-white/5"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-900/5 dark:hover:bg-white/5"
+                    ? "text-white dark:text-white"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
                 {item.label}

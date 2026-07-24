@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "./components/Header";
 import CommandPaletteModal from "./components/CommandPaletteModal";
 import SecurityShield from "./components/SecurityShield";
-import { HERO_CONTENT } from "./constants/portfolioConstants";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { OfflineToast } from "./components/OfflineToast";
 import { ToastContainer } from "./components/ToastContainer";
@@ -82,7 +81,7 @@ export default function RootLayout({
           <div id="stars3" className="star-layer"></div>
           
           <Header />
-          <main className="flex-grow z-10 relative">
+          <main className="flex-grow z-10 relative md:pt-20">
             <ErrorBoundary name="Main Content Area">
               {children}
             </ErrorBoundary>

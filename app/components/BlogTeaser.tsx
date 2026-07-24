@@ -30,7 +30,7 @@ const BlogTeaser: React.FC = () => {
               <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
                 {topic.title}
               </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                 {topic.desc}
               </p>
             </div>
@@ -47,7 +47,7 @@ const BlogTeaser: React.FC = () => {
             <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
               More Articles Coming Soon
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
               Stay tuned for technical breakdowns regarding Next.js 15+, React Hooks performance, and SQL optimizations.
             </p>
           </div>

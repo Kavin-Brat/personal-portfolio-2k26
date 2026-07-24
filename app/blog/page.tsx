@@ -34,8 +34,8 @@ export default function BlogPage() {
                 Blog Coming Soon
               </h1>
             </div>
-            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-2xl font-sans">
-              I&apos;m working on detailed breakdowns describing full stack application architectures, AWS cloud configurations, operational pipeline scripts, and system design patterns. Stay tuned!
+            <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed max-w-2xl font-sans">
+              I&apos;m working on detailed breakdowns describing full stack application architectures, interactive dashboards, micro-frontend modules, and client-side optimization patterns. Stay tuned!
             </p>
 
             <div className="border-t border-slate-200/20 dark:border-slate-800/10 pt-8 mt-8 space-y-6">
@@ -51,7 +51,7 @@ export default function BlogPage() {
                     <h3 className="font-bold text-slate-900 dark:text-white text-base">
                       {topic.title}
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-455 mt-2 leading-relaxed font-sans">
+                    <p className="text-sm text-slate-700 dark:text-slate-300 mt-2 leading-relaxed font-sans">
                       {topic.desc}
                     </p>
                   </div>

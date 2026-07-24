@@ -233,27 +233,27 @@ export interface BlogTopic {
 
 export const FUTURE_TOPICS: BlogTopic[] = [
   {
-    title: "Uncoupling Monoliths to Microservices",
-    desc: "A practical guide to database separation and event-driven patterns in enterprise applications.",
-    tag: "System Design",
+    title: "Building Modular Dashboards with Webpack Module Federation",
+    desc: "A step-by-step guide to breaking down dashboard monoliths into independent Micro Frontend modules using Webpack.",
+    tag: "Micro Frontend",
     comingSoon: true,
   },
   {
-    title: "Securing AWS Event-Driven Models",
-    desc: "Fine-grained IAM policy scripting, API Gateways authorization, and secure Lambda deployments.",
-    tag: "AWS / Cloud",
+    title: "Developing Interactive Data Dashboards in React & Vite",
+    desc: "Implementing real-time metrics, interactive charts, and dynamic data visualization tables using React and Vite.",
+    tag: "React & Vite",
     comingSoon: true,
   },
   {
-    title: "Next.js 16 & React 19 Client Workflows",
-    desc: "Exploring the new rendering pipelines, server components, and performance optimizations.",
-    tag: "Frontend",
+    title: "Streamlining Developer API Integration and Testing Workflows",
+    desc: "Designing developer-friendly portals for testing sandbox APIs, tracking API integration progress, and automated reporting.",
+    tag: "API Design",
     comingSoon: true,
   },
   {
-    title: "Database Tuning for Transactional Integrity",
-    desc: "Indexing strategies, locking profiles, and read/write scaling in PostgreSQL and MySQL.",
-    tag: "Databases",
+    title: "Optimizing Web Performance with JavaScript and Tailwind CSS",
+    desc: "Proven client-side optimization techniques to improve Lighthouse scores, reduce bundle sizes, and write clean, maintainable styles.",
+    tag: "Performance",
     comingSoon: true,
   },
 ];
