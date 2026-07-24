@@ -205,6 +205,8 @@ html[data-theme="light"] .dark\:bg-black {
   height: 100%;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .star-layer:after {

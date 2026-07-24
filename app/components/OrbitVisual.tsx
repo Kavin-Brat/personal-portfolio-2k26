@@ -63,7 +63,7 @@ const OrbitVisual: React.FC = () => {
 
       {/* Central Profile Avatar Component */}
       <CentralAvatar
-        imageSrc="/kavin_profile_pic.png"
+        imageSrc="/kavin_profile_pic.jpg"
         altText="Kavin Barath"
       />
 
