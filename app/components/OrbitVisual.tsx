@@ -36,7 +36,7 @@ const OrbitVisual: React.FC = () => {
       {/* 3 Decorative Colored Planet Dots */}
       {/* Dot 1: Vibrant Orange Planet Dot on Outer Orbit */}
       <div
-        className="absolute w-[95%] h-[95%] rounded-full animate-[spin_40s_linear_infinite] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] h-[95%] rounded-full animate-[spin_40s_linear_infinite] pointer-events-none"
         style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         <div className="absolute top-[8%] left-[78%] w-4 h-4 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 shadow-[0_0_12px_rgba(245,158,11,0.6)]" />
@@ -44,7 +44,7 @@ const OrbitVisual: React.FC = () => {
 
       {/* Dot 2: Emerald/Teal Planet Dot on Mid Orbit */}
       <div
-        className="absolute w-[82%] h-[82%] rounded-full animate-[spin_26s_linear_infinite] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[82%] h-[82%] rounded-full animate-[spin_26s_linear_infinite] pointer-events-none"
         style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         <div className="absolute bottom-[2%] left-[15%] w-3.5 h-3.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 shadow-md" />
@@ -52,14 +52,14 @@ const OrbitVisual: React.FC = () => {
 
       {/* Dot 3: Indigo/Purple Planet Dot on Inner Orbit */}
       <div
-        className="absolute w-[70%] h-[70%] rounded-full animate-[spin_18s_linear_infinite] pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] rounded-full animate-[spin_18s_linear_infinite] pointer-events-none"
         style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         <div className="absolute top-[84%] right-[22%] w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 shadow-inner" />
       </div>
 
       {/* Backlight glow/shadow behind the avatar (black on light theme, white on dark theme) */}
-      <div className="absolute w-[48%] h-[48%] rounded-full bg-black/14 dark:bg-white/8 blur-2xl pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38%] h-[38%] md:w-[48%] md:h-[48%] rounded-full bg-black/14 dark:bg-white/8 blur-2xl pointer-events-none z-0" />
 
       {/* Central Profile Avatar Component */}
       <CentralAvatar

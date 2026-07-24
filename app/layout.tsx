@@ -20,8 +20,52 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${HERO_CONTENT.name} | ${HERO_CONTENT.title}`,
-  description: `Personal portfolio of ${HERO_CONTENT.name}, ${HERO_CONTENT.title}. ${HERO_CONTENT.elevatorPitch}`,
+  title: "Kavin Barath | Senior Software Engineer - Bangalore",
+  description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore). Specialized in React.js, Next.js, and Node.js.",
+  keywords: [
+    "Kavin",
+    "Kavin Barath",
+    "Kavin Bangalore",
+    "Kavin Barath Bangalore",
+    "Kavin Developer",
+    "Kavin Barath Developer",
+    "Kavin Barath Frontend Developer",
+    "Kavin Barath Backend Developer",
+    "Kavin Bangalore Developer",
+    "Full Stack Developer Bangalore",
+    "Senior Software Engineer Bangalore"
+  ],
+  authors: [{ name: "Kavin Barath" }],
+  creator: "Kavin Barath",
+  publisher: "Kavin Barath",
+  metadataBase: new URL("https://kavinbarath.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Kavin Barath | Senior Software Engineer - Bangalore",
+    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore). Specialized in React.js, Next.js, and Node.js.",
+    url: "https://kavinbarath.com",
+    siteName: "Kavin Barath | Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kavin Barath | Senior Software Engineer",
+    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore).",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

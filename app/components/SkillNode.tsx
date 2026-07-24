@@ -39,7 +39,7 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
   ({ skill, isActive, isPaused, onMouseEnter, onMouseLeave, onClick }) => {
     return (
       <div
-        className={`absolute rounded-full transition-all duration-300 pointer-events-none ${skill.orbitClass}`}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all duration-300 pointer-events-none ${skill.orbitClass}`}
         style={{ animationPlayState: isPaused ? "paused" : "running" }}
       >
         {/* Interactive Skill Node Button */}

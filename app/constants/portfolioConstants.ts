@@ -168,8 +168,9 @@ export const ABOUT_CONTENT: AboutContent = {
   titleWho: "Who I Am",
   titleSkills: "Technical Skills",
   paragraphs: [
-    "Senior Full-Stack Engineer with <strong>5+ years of experience</strong> specializing in building and scaling enterprise-level applications using <strong>React.js and Node.js</strong>. Proven track record of leading development teams, collaborating across cross-functional units, and delivering customer-centric solutions with robust API integrations.",
-    "Strong advocate for project ownership, direct client engagement, and clean code practices, with consistent recognition for high-quality product delivery in large-scale environments.",
+    "I am <strong>Kavin Barath</strong>, a Senior Software Engineer and Full Stack Developer based in <strong>Bengaluru (Bangalore)</strong>, specializing in building and scaling high-performance web applications using <strong>React.js, Next.js, and Node.js</strong>.",
+    "I have over 5 years of professional engineering experience, with a proven track record of architecting modular Micro Frontend (MFE) systems and designing secure, high-volume transactional microservices.",
+    "As a dedicated frontend and backend developer, I champion clean code architecture, direct stakeholder collaboration, and performant product engineering to turn complex requirements into elegant digital experiences.",
   ],
 };
 
