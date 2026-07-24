@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 
 // EmailJS configuration constants (can be overridden via environment variables)
@@ -9,36 +9,133 @@ const EMAILJS_NOTIFICATION_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_NOTIFIC
 const EMAILJS_AUTO_REPLY_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_AUTO_REPLY_TEMPLATE_ID || "";
 const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
 
+interface FormFieldProps {
+  id: string;
+  name: string;
+  label: string;
+  type: "text" | "email" | "textarea";
+  value: string;
+  placeholder: string;
+  required?: boolean;
+  disabled?: boolean;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
+
+/**
+ * FormField Component
+ * 
+ * Reusable input and textarea form field wrapper following the site's design system.
+ */
+const FormField: React.FC<FormFieldProps> = ({
+  id,
+  name,
+  label,
+  type,
+  value,
+  placeholder,
+  required = true,
+  disabled = false,
+  onChange,
+}) => {
+  const baseClasses = "w-full px-4 py-3 rounded-lg border border-slate-350 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors text-sm font-medium disabled:opacity-60 disabled:cursor-not-allowed";
+  
+  return (
+    <div className="space-y-2 text-left">
+      <label htmlFor={id} className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">
+        {label}
+      </label>
+      {type === "textarea" ? (
+        <textarea
+          id={id}
+          name={name}
+          rows={5}
+          value={value}
+          onChange={onChange}
+          className={`${baseClasses} resize-none`}
+          placeholder={placeholder}
+          required={required}
+          disabled={disabled}
+        />
+      ) : (
+        <input
+          id={id}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          className={baseClasses}
+          placeholder={placeholder}
+          required={required}
+          disabled={disabled}
+        />
+      )}
+    </div>
+  );
+};
+
+/**
+ * ContactForm Component
+ * 
+ * Handles user contact form submission. Concurrently dispatches a notification email
+ * to the owner and an auto-acknowledgement reply back to the sender via EmailJS.
+ */
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const statusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
+  // Clean up active timers on unmount to prevent state updates on unmounted component
+  useEffect(() => {
+    return () => {
+      if (statusTimeoutRef.current) {
+        clearTimeout(statusTimeoutRef.current);
+      }
+    };
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Stable input change handler using functional state updates
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  }, []);
+
+  // Form submission handler with client-side environment conditional checks
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+    
+    // Clear any currently running status auto-reset timers
+    if (statusTimeoutRef.current) {
+      clearTimeout(statusTimeoutRef.current);
+    }
+    
     setStatus("sending");
+    setErrorMessage("");
 
-    // Guard clause to check if the necessary environment variables are set
+    // Verify presence of required configurations
     if (!EMAILJS_SERVICE_ID || !EMAILJS_NOTIFICATION_TEMPLATE_ID || !EMAILJS_AUTO_REPLY_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       const configError = "EmailJS credentials are not configured. Please define them in your environment variables.";
       setErrorMessage(configError);
       setStatus("error");
+      
       if (process.env.NODE_ENV === "development") {
         alert(configError);
       }
       console.error(configError);
+      
+      // Auto-hide configuration error warning after 5 seconds
+      statusTimeoutRef.current = setTimeout(() => {
+        setStatus("idle");
+        setErrorMessage("");
+      }, 5000);
       return;
     }
     
     try {
-      // Initialize EmailJS with the Public Key
+      // Load and initialises EmailJS connection pool
       emailjs.init(EMAILJS_PUBLIC_KEY);
 
-      // Trigger both notification and auto-reply templates concurrently
+      // Concurrent delivery of templates (notification + confirmation auto-reply)
       await Promise.all([
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_NOTIFICATION_TEMPLATE_ID, e.currentTarget),
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_AUTO_REPLY_TEMPLATE_ID, e.currentTarget)
@@ -47,86 +144,81 @@ const ContactForm: React.FC = () => {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       
-      // Alert dialog is only displayed during local development
+      // Developer alert feedback in development environment
       if (process.env.NODE_ENV === "development") {
         alert("Message sent successfully! Check your inbox for confirmation.");
       }
+
+      // Auto-hide success alert text after 5 seconds
+      statusTimeoutRef.current = setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
     } catch (error) {
       const errMsg = error instanceof Error ? error.message : JSON.stringify(error);
       setErrorMessage(errMsg);
       setStatus("error");
       
-      // Alert dialog is only displayed during local development
+      // Developer alert feedback in development environment
       if (process.env.NODE_ENV === "development") {
         alert("Failed to send email. Error: " + errMsg);
       }
       console.error("Failed to send email via EmailJS:", error);
+
+      // Auto-hide failure alert text after 5 seconds
+      statusTimeoutRef.current = setTimeout(() => {
+        setStatus("idle");
+        setErrorMessage("");
+      }, 5000);
     }
-  };
+  }, []);
+
+  const isSending = status === "sending";
 
   return (
     <div className="w-full p-6 sm:p-8 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/20 backdrop-blur-sm">
       <form id="contact-form" onSubmit={handleSubmit} className="space-y-6 text-left">
         <div className="grid sm:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label htmlFor="name" className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="from_name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg border border-slate-350 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors text-sm font-medium"
-              placeholder="John Doe"
-              required
-              disabled={status === "sending"}
-            />
-          </div>
-          <div className="space-y-2">
-            <label htmlFor="email" className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">
-              Your Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="from_email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-3 rounded-lg border border-slate-350 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors text-sm font-medium"
-              placeholder="john@example.com"
-              required
-              disabled={status === "sending"}
-            />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label htmlFor="message" className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">
-            Your Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={5}
-            value={formData.message}
+          <FormField
+            id="name"
+            name="from_name"
+            label="Your Name"
+            type="text"
+            value={formData.name}
+            placeholder="John Doe"
+            disabled={isSending}
             onChange={handleChange}
-            className="w-full px-4 py-3 rounded-lg border border-slate-350 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors text-sm font-medium resize-none animate-[pulse_0]"
-            placeholder="Tell me about your project..."
-            required
-            disabled={status === "sending"}
+          />
+          <FormField
+            id="email"
+            name="from_email"
+            label="Your Email"
+            type="email"
+            value={formData.email}
+            placeholder="john@example.com"
+            disabled={isSending}
+            onChange={handleChange}
           />
         </div>
+
+        <FormField
+          id="message"
+          name="message"
+          label="Your Message"
+          type="textarea"
+          value={formData.message}
+          placeholder="Tell me about your project..."
+          disabled={isSending}
+          onChange={handleChange}
+        />
 
         <div className="flex items-center gap-4">
           <button
             type="submit"
             id="submit-btn"
-            disabled={status === "sending"}
+            disabled={isSending}
             className="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-slate-200 transition-all shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {status === "sending" ? "Sending..." : "Send Message"}
+            {isSending ? "Sending..." : "Send Message"}
           </button>
           
           {status === "success" && (
