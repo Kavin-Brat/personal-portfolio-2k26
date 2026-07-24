@@ -14,7 +14,7 @@ const applyTheme = (theme: "light" | "dark"): void => {
     } else {
       document.documentElement.classList.remove("dark");
     }
-  } catch (error) {
+  } catch {
     // Suppress SSR/environment errors silently
   }
 };
@@ -31,17 +31,23 @@ export default function ThemeToggle() {
 
   // Load saved theme or system preference on mount
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initialTheme = saved || (systemPrefersDark ? "dark" : "light");
-      
-      setTheme(initialTheme);
-      applyTheme(initialTheme);
-      setMounted(true);
-    } catch (e) {
-      setMounted(true); // Ensure component remains functional if localStorage fails
-    }
+    const initTheme = () => {
+      try {
+        const saved = localStorage.getItem("theme") as "light" | "dark" | null;
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const initialTheme = saved || (systemPrefersDark ? "dark" : "light");
+        
+        setTheme(initialTheme);
+        applyTheme(initialTheme);
+      } catch {
+        // Suppress errors
+      } finally {
+        setMounted(true);
+      }
+    };
+
+    // Defer initialization to next animation frame to prevent synchronous render state cascade
+    requestAnimationFrame(initTheme);
   }, []);
 
   // Listen to synchronisation events from other theme toggles on the page
@@ -65,7 +71,7 @@ export default function ThemeToggle() {
     try {
       applyTheme(theme);
       localStorage.setItem("theme", theme);
-    } catch (e) {
+    } catch {
       // Suppress exceptions
     }
   }, [theme, mounted]);

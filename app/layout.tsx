@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import CommandPaletteModal from "./components/CommandPaletteModal";
 import SecurityShield from "./components/SecurityShield";
 
+import { HERO_CONTENT } from "./constants/portfolioConstants";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kavin Barath | Senior Software Engineer",
-  description: "Personal portfolio of Kavin Barath S, Senior Full-Stack Engineer with 5+ years of experience specializing in React.js and Node.js. Leading teams and delivering clean code.",
+  title: `${HERO_CONTENT.name} | ${HERO_CONTENT.title}`,
+  description: `Personal portfolio of ${HERO_CONTENT.name}, ${HERO_CONTENT.title}. ${HERO_CONTENT.elevatorPitch}`,
 };
 
 export default function RootLayout({

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { ABOUT_CONTENT } from "../constants/portfolioConstants";
 
 interface TerminalLine {
   text: string;
@@ -33,6 +34,22 @@ export default function CommandPaletteModal() {
   // Memoized close handler to maintain reference integrity
   const onClose = useCallback((): void => {
     setIsOpen(false);
+    setSearchQuery("");
+    setTerminalInput("");
+    setSelectedIndex(0);
+  }, []);
+
+  // Memoized toggle handler to clear state on closing
+  const togglePalette = useCallback((): void => {
+    setIsOpen((prev) => {
+      const next = !prev;
+      if (!next) {
+        setSearchQuery("");
+        setTerminalInput("");
+        setSelectedIndex(0);
+      }
+      return next;
+    });
   }, []);
 
   // Memoized command palette actions registry registry database
@@ -62,11 +79,6 @@ export default function CommandPaletteModal() {
     );
   }, [actions, searchQuery]);
 
-  // Reset keyboard index when search input value changes
-  useEffect(() => {
-    setSelectedIndex(0);
-  }, [searchQuery]);
-
   // Auto-scroll CLI terminal buffer to bottom
   useEffect(() => {
     if (activeTab === "terminal") {
@@ -81,10 +93,6 @@ export default function CommandPaletteModal() {
         inputRef.current?.focus();
       }, 100);
       return () => clearTimeout(timer);
-    } else {
-      setSearchQuery("");
-      setTerminalInput("");
-      setSelectedIndex(0);
     }
   }, [isOpen, activeTab]);
 
@@ -106,7 +114,7 @@ export default function CommandPaletteModal() {
 
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
-        setIsOpen((prev) => !prev);
+        togglePalette();
         return;
       }
       if (e.key === "/" && !isOpen && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
@@ -144,14 +152,14 @@ export default function CommandPaletteModal() {
 
     const handleToggle = () => {
       if (window.innerWidth >= 1280) {
-        setIsOpen((prev) => !prev);
+        togglePalette();
       }
     };
 
     // Close palette if screen is resized below 1280px
     const handleResize = () => {
       if (window.innerWidth < 1280) {
-        setIsOpen(false);
+        onClose();
       }
     };
 
@@ -164,7 +172,7 @@ export default function CommandPaletteModal() {
       window.removeEventListener("toggle-command-palette", handleToggle);
       window.removeEventListener("resize", handleResize);
     };
-  }, [isOpen, activeTab, filteredActions, selectedIndex, onClose]);
+  }, [isOpen, activeTab, filteredActions, selectedIndex, onClose, togglePalette]);
 
   // Process CLI console commands
   const handleTerminalSubmit = useCallback((e: React.FormEvent): void => {
@@ -189,7 +197,7 @@ export default function CommandPaletteModal() {
         break;
       case "about":
         newHistory.push({
-          text: "Senior Full-Stack Engineer with 5+ years of experience specializing in React.js and Node.js. Proven track record of leading teams, collaborating across cross-functional units, and delivering customer-centric solutions with robust API integrations.",
+          text: ABOUT_CONTENT.paragraphs[0].replace(/<\/?[^>]+(>|$)/g, ""),
           type: "output",
         });
         break;
@@ -285,7 +293,10 @@ export default function CommandPaletteModal() {
                 ref={inputRef}
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setSelectedIndex(0);
+                }}
                 placeholder="Type a command or section..."
                 className="w-full bg-transparent border-none text-slate-800 dark:text-slate-100 text-sm focus:outline-none focus:ring-0 placeholder-slate-400"
               />

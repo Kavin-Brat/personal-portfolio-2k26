@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { SOCIAL_LINKS } from "../constants/portfolioConstants";
+import { SOCIAL_LINKS, CONTACT_CONTENT } from "../constants/portfolioConstants";
 import { ArrowLeftIcon, EmailIcon, LocationIcon, GitHubIcon, LinkedInIcon } from "../components/Icons";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
@@ -17,10 +17,10 @@ export default function ContactPage() {
             Back to Portfolio
           </Link>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white pt-2">
-            Get In Touch
+            {CONTACT_CONTENT.title}
           </h1>
           <p className="text-slate-650 dark:text-slate-400 mt-2 text-base sm:text-lg max-w-2xl font-sans">
-            Have a project in mind, need architecture reviews, or want to discuss full stack code? Drop a message below or reach out via socials.
+            {CONTACT_CONTENT.descPage}
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function ContactPage() {
               <div>
                 <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-455 uppercase">Current Location</h4>
                 <p className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100 group-hover:text-amber-500 transition-colors">
-                  Puducherry, Pondicherry, India
+                  {CONTACT_CONTENT.location}
                 </p>
               </div>
             </div>

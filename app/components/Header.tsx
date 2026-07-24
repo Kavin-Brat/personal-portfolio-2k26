@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     if (pathname !== "/") {
-      setActiveHash(pathname);
+      requestAnimationFrame(() => setActiveHash(pathname));
       return;
     }
 

@@ -1,7 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { FUTURE_TOPICS } from "../constants/portfolioConstants";
 
 const BlogTeaser: React.FC = () => {
+  // Slice first 2 topics for the teaser grid
+  const teaserTopics = FUTURE_TOPICS.slice(0, 2);
+
   return (
     <section
       id="blog"
@@ -15,35 +19,28 @@ const BlogTeaser: React.FC = () => {
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 text-left">
-        {/* Card 1 */}
-        <div className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/50 dark:bg-slate-900/10 backdrop-blur-sm space-y-4 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-300">
-          <div className="space-y-2 font-sans">
-            <span className="text-xs font-semibold text-amber-500">COMING SOON</span>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
-              Uncoupling Monoliths to Microservices
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Step-by-step roadmap to migrating single database monolithic architectures into fault-tolerant distributed networks.
-            </p>
+        {/* Dynamic teaser cards */}
+        {teaserTopics.map((topic) => (
+          <div
+            key={topic.title}
+            className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/50 dark:bg-slate-900/10 backdrop-blur-sm space-y-4 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-300"
+          >
+            <div className="space-y-2 font-sans">
+              <span className="text-xs font-semibold text-amber-500">COMING SOON</span>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
+                {topic.title}
+              </h3>
+              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                {topic.desc}
+              </p>
+            </div>
+            <div className="pt-2 text-xs font-semibold uppercase text-slate-400 font-sans">
+              {topic.tag}
+            </div>
           </div>
-          <div className="pt-2 text-xs font-semibold uppercase text-slate-400 font-sans">System Design</div>
-        </div>
+        ))}
 
-        {/* Card 2 */}
-        <div className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/50 dark:bg-slate-900/10 backdrop-blur-sm space-y-4 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-300">
-          <div className="space-y-2 font-sans">
-            <span className="text-xs font-semibold text-amber-500">COMING SOON</span>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">
-              Securing AWS Event-Driven Models
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Implementing least-privilege IAM models across AWS Lambda triggers, API gateways, and Kafka stream consumers.
-            </p>
-          </div>
-          <div className="pt-2 text-xs font-semibold uppercase text-slate-400 font-sans">AWS / Cloud</div>
-        </div>
-
-        {/* Card 3 */}
+        {/* Card 3 - Visit Blog Link */}
         <div className="p-6 rounded-2xl border border-slate-200/30 dark:border-slate-800/40 bg-slate-50/50 dark:bg-slate-900/10 backdrop-blur-sm space-y-4 flex flex-col justify-between group hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-300">
           <div className="space-y-2 font-sans">
             <span className="text-xs font-semibold text-indigo-400">VISIT BLOG PAGE</span>

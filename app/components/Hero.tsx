@@ -1,18 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { SOCIAL_LINKS } from "../constants/portfolioConstants";
+import { SOCIAL_LINKS, HERO_CONTENT } from "../constants/portfolioConstants";
 import { GitHubIcon, LinkedInIcon, EmailIcon, DownloadIcon } from "./Icons";
 import OrbitVisual from "./OrbitVisual";
-
-/**
- * Roles list for the typewriter animation effect.
- */
-const ROLES = [
-  "Full Stack Developer",
-  "Frontend Engineer",
-  "Backend Architect",
-];
 
 /**
  * Hero Component
@@ -29,7 +20,7 @@ const Hero: React.FC = () => {
 
   // Typewriter animation timer loop
   useEffect(() => {
-    const currentRole = ROLES[roleIndex];
+    const currentRole = HERO_CONTENT.roles[roleIndex];
     let timer: NodeJS.Timeout;
 
     if (!isDeleting) {
@@ -47,8 +38,10 @@ const Hero: React.FC = () => {
           setDisplayedText(currentRole.slice(0, displayedText.length - 1));
         }, 50);
       } else {
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % HERO_CONTENT.roles.length);
+        }, 300);
       }
     }
 
@@ -64,13 +57,13 @@ const Hero: React.FC = () => {
       <div className="flex-1 space-y-6 text-left">
         <div className="space-y-2">
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Hi, I'm{" "}
+            {HERO_CONTENT.greeting}
             <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-600 bg-clip-text text-transparent">
-              Kavin Barath
+              {HERO_CONTENT.name}
             </span>
           </h1>
           <div className="text-xl sm:text-2xl font-medium text-slate-700 dark:text-slate-200 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-            <span>Senior Software Engineer</span>
+            <span>{HERO_CONTENT.title}</span>
             <span className="hidden sm:inline text-amber-500 font-bold">·</span>
             <span className="inline-block text-amber-500 dark:text-amber-400 font-semibold min-h-[1.5em] border-r-2 border-amber-400 animate-pulse pr-1">
               {displayedText}
@@ -79,7 +72,7 @@ const Hero: React.FC = () => {
         </div>
 
         <p className="text-slate-600 dark:text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed font-sans">
-          An engineer who loves turning complex challenges into simple, elegant digital experiences. I bring ideas from concept to production with a focus on smart design and continuous learning. Always evolving with modern tech to create software that makes a real impact. Let’s build something great together.
+          {HERO_CONTENT.elevatorPitch}
         </p>
 
         {/* Action Buttons: Resume & Social Links */}

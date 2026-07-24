@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
+import { CONTACT_CONTENT } from "../constants/portfolioConstants";
 
 // EmailJS configuration constants (can be overridden via environment variables)
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
@@ -114,7 +115,7 @@ const ContactForm: React.FC = () => {
 
     // Verify presence of required configurations
     if (!EMAILJS_SERVICE_ID || !EMAILJS_NOTIFICATION_TEMPLATE_ID || !EMAILJS_AUTO_REPLY_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      const configError = "EmailJS credentials are not configured. Please define them in your environment variables.";
+      const configError = CONTACT_CONTENT.statusMessages.credentialsMissing;
       setErrorMessage(configError);
       setStatus("error");
       
@@ -134,19 +135,19 @@ const ContactForm: React.FC = () => {
     try {
       // Load and initialises EmailJS connection pool
       emailjs.init(EMAILJS_PUBLIC_KEY);
-
+ 
       // Concurrent delivery of templates (notification + confirmation auto-reply)
       await Promise.all([
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_NOTIFICATION_TEMPLATE_ID, e.currentTarget),
         emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_AUTO_REPLY_TEMPLATE_ID, e.currentTarget)
       ]);
-
+ 
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
       
       // Developer alert feedback in development environment
       if (process.env.NODE_ENV === "development") {
-        alert("Message sent successfully! Check your inbox for confirmation.");
+        alert(CONTACT_CONTENT.statusMessages.success);
       }
 
       // Auto-hide success alert text after 5 seconds
@@ -181,20 +182,20 @@ const ContactForm: React.FC = () => {
           <FormField
             id="name"
             name="from_name"
-            label="Your Name"
+            label={CONTACT_CONTENT.formLabels.name}
             type="text"
             value={formData.name}
-            placeholder="John Doe"
+            placeholder={CONTACT_CONTENT.formPlaceholders.name}
             disabled={isSending}
             onChange={handleChange}
           />
           <FormField
             id="email"
             name="from_email"
-            label="Your Email"
+            label={CONTACT_CONTENT.formLabels.email}
             type="email"
             value={formData.email}
-            placeholder="john@example.com"
+            placeholder={CONTACT_CONTENT.formPlaceholders.email}
             disabled={isSending}
             onChange={handleChange}
           />
@@ -203,10 +204,10 @@ const ContactForm: React.FC = () => {
         <FormField
           id="message"
           name="message"
-          label="Your Message"
+          label={CONTACT_CONTENT.formLabels.message}
           type="textarea"
           value={formData.message}
-          placeholder="Tell me about your project..."
+          placeholder={CONTACT_CONTENT.formPlaceholders.message}
           disabled={isSending}
           onChange={handleChange}
         />
@@ -218,22 +219,22 @@ const ContactForm: React.FC = () => {
             disabled={isSending}
             className="w-full sm:w-auto px-8 py-3.5 rounded-full text-sm font-semibold bg-slate-900 text-white dark:bg-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-slate-200 transition-all shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSending ? "Sending..." : "Send Message"}
+            {isSending ? CONTACT_CONTENT.statusMessages.sending : "Send Message"}
           </button>
           
           {status === "success" && (
             <p className="text-sm font-semibold text-emerald-500 font-sans">
               {process.env.NODE_ENV === "development"
-                ? "Message sent successfully! (Dev Mode: Dispatched notification and auto-reply templates)"
-                : "Thank you! Your message has been sent successfully."}
+                ? CONTACT_CONTENT.statusMessages.devSuccess
+                : CONTACT_CONTENT.statusMessages.success}
             </p>
           )}
 
           {status === "error" && (
             <p className="text-sm font-semibold text-rose-500 font-sans">
               {process.env.NODE_ENV === "development" && errorMessage
-                ? `Error: ${errorMessage} (Verify EmailJS Service ID, Template IDs, or CSP)`
-                : "Something went wrong while sending your message. Please try again later."}
+                ? CONTACT_CONTENT.statusMessages.devError.replace("{error}", errorMessage)
+                : CONTACT_CONTENT.statusMessages.error}
             </p>
           )}
         </div>

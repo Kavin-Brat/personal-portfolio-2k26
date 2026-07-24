@@ -28,8 +28,6 @@ export default function SecurityShield({ children }: SecurityShieldProps) {
 
     // 4. Intercept DevTools and source viewing keyboard shortcuts
     const handleKeyDown = (e: KeyboardEvent) => {
-      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-      
       // F12 key
       if (e.key === "F12") {
         e.preventDefault();

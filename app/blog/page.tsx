@@ -5,13 +5,9 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "../components/Icons";
 import Footer from "../components/Footer";
 
+import { FUTURE_TOPICS } from "../constants/portfolioConstants";
+
 export default function BlogPage() {
-  const futureTopics = [
-    { title: "Uncoupling Monoliths to Microservices", desc: "A practical guide to database separation and event-driven patterns in enterprise applications." },
-    { title: "Securing AWS Event-Driven Models", desc: "Fine-grained IAM policy scripting, API Gateways authorization, and secure Lambda deployments." },
-    { title: "Next.js 16 & React 19 Client Workflows", desc: "Exploring the new rendering pipelines, server components, and performance optimizations." },
-    { title: "Database Tuning for Transactional Integrity", desc: "Indexing strategies, locking profiles, and read/write scaling in PostgreSQL and MySQL." }
-  ];
 
   return (
     <div className="w-full min-h-[90vh] flex flex-col justify-between">
@@ -30,7 +26,7 @@ export default function BlogPage() {
             </h1>
           </div>
           <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-2xl font-sans">
-            I'm working on detailed breakdowns describing full stack application architectures, AWS cloud configurations, operational pipeline scripts, and system design patterns. Stay tuned!
+            I&apos;m working on detailed breakdowns describing full stack application architectures, AWS cloud configurations, operational pipeline scripts, and system design patterns. Stay tuned!
           </p>
 
           <div className="border-t border-slate-200/20 dark:border-slate-800/10 pt-8 mt-8 space-y-6">
@@ -38,7 +34,7 @@ export default function BlogPage() {
               Check back soon for articles on:
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
-              {futureTopics.map((topic, i) => (
+              {FUTURE_TOPICS.map((topic, i) => (
                 <div
                   key={i}
                   className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/35 bg-slate-50/20 dark:bg-slate-900/5 hover:border-amber-500/35 transition-colors"

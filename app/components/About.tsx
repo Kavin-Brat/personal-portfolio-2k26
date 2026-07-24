@@ -1,5 +1,6 @@
 import React from "react";
-import { PORTFOLIO_SKILLS, DOMAIN_EXPERTISE } from "../constants/portfolioConstants"; import { SkillIcon } from "./Icons";
+import { PORTFOLIO_SKILLS, DOMAIN_EXPERTISE, ABOUT_CONTENT } from "../constants/portfolioConstants";
+import { SkillIcon } from "./Icons";
 
 const About: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const About: React.FC = () => {
     >
       <div className="space-y-4 text-left">
         <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Who I Am
+          {ABOUT_CONTENT.titleWho}
         </h2>
         <div className="w-12 h-1 bg-amber-500 rounded-full" />
       </div>
@@ -17,12 +18,9 @@ const About: React.FC = () => {
       <div className="grid md:grid-cols-12 gap-12 items-start">
         {/* Description */}
         <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-400 text-left text-base sm:text-lg leading-relaxed">
-          <p>
-            Senior Full-Stack Engineer with <strong>5+ years of experience</strong> specializing in building and scaling enterprise-level applications using <strong>React.js and Node.js</strong>. Proven track record of leading development teams, collaborating across cross-functional units, and delivering customer-centric solutions with robust API integrations.
-          </p>
-          <p>
-            Strong advocate for project ownership, direct client engagement, and clean code practices, with consistent recognition for high-quality product delivery in large-scale environments.
-          </p>
+          {ABOUT_CONTENT.paragraphs.map((paragraph, index) => (
+            <p key={index} dangerouslySetInnerHTML={{ __html: paragraph }} />
+          ))}
         </div>
 
         {/* Domain Expertise */}
@@ -45,7 +43,7 @@ const About: React.FC = () => {
 
       {/* Technical Skills Grid */}
       <div className="mt-8 space-y-6 text-left">
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white">Technical Skills</h3>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{ABOUT_CONTENT.titleSkills}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <div className="p-5 rounded-xl border border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 hover:border-amber-550/20 transition-all">
             <h4 className="font-bold text-sm uppercase text-amber-500 tracking-wider mb-3">Languages</h4>
