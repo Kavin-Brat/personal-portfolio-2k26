@@ -33,6 +33,7 @@ const securityHeaders = [
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: blob: https://cdn.jsdelivr.net https://skillicons.dev;
       font-src 'self' data:;
+      connect-src 'self' https://api.emailjs.com;
       object-src 'none';
       base-uri 'self';
       form-action 'self';
