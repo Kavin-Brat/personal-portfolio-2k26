@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import CommandPaletteModal from "./components/CommandPaletteModal";
+import SecurityShield from "./components/SecurityShield";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,17 +28,19 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="light" className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}>
       <body className="antialiased min-h-screen flex flex-col relative">
-        <div id="stars1" className="star-layer"></div>
-        <div id="stars2" className="star-layer"></div>
-        <div id="stars3" className="star-layer"></div>
-        
-        <Header />
-        <main className="flex-grow z-10 relative">
-          {children}
-        </main>
-        
-        {/* Global Developer Terminal & Command Menu Modal */}
-        <CommandPaletteModal />
+        <SecurityShield>
+          <div id="stars1" className="star-layer"></div>
+          <div id="stars2" className="star-layer"></div>
+          <div id="stars3" className="star-layer"></div>
+          
+          <Header />
+          <main className="flex-grow z-10 relative">
+            {children}
+          </main>
+          
+          {/* Global Developer Terminal & Command Menu Modal */}
+          <CommandPaletteModal />
+        </SecurityShield>
       </body>
     </html>
   );

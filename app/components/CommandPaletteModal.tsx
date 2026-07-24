@@ -12,7 +12,7 @@ interface TerminalLine {
  * CommandPaletteModal Component
  * 
  * A unified developer terminal and command palette modal widget.
- * Only activated/rendered on Tablet (768px) and Desktop viewports.
+ * Only activated/rendered on Desktop viewports (1280px and above).
  * Keybind triggers: Ctrl+K, Cmd+K, or `/`
  */
 export default function CommandPaletteModal() {
@@ -101,8 +101,8 @@ export default function CommandPaletteModal() {
   // Global keybind listeners (Ctrl/Cmd + K, or '/') and viewport resize listeners
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignore mobile devices (< 768px width)
-      if (window.innerWidth < 768) return;
+      // Ignore mobile, tablet, and small laptop devices (< 1280px width)
+      if (window.innerWidth < 1280) return;
 
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
@@ -143,14 +143,14 @@ export default function CommandPaletteModal() {
     };
 
     const handleToggle = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1280) {
         setIsOpen((prev) => !prev);
       }
     };
 
-    // Close palette if screen is resized below 768px
+    // Close palette if screen is resized below 1280px
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1280) {
         setIsOpen(false);
       }
     };

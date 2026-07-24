@@ -93,7 +93,7 @@ const Header: React.FC = () => {
           {/* Right items */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Command Palette Trigger */}
-            <div className="relative group hidden md:block z-50">
+            <div className="relative group hidden xl:block z-50">
               <button
                 onClick={() => window.dispatchEvent(new CustomEvent("toggle-command-palette"))}
                 className="p-2 rounded-full border border-slate-300/40 dark:border-slate-800/60 bg-slate-100/30 dark:bg-slate-900/30 text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:border-amber-500 transition-all flex items-center justify-center cursor-pointer relative z-50"
