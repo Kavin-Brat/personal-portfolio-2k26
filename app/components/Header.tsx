@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BRAND, NAV_ITEMS } from "../constants/headerConstants";
@@ -53,15 +53,42 @@ const Header: React.FC = () => {
     };
   }, [pathname]);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
+  const toggleMenu = useCallback((): void => {
+    setIsOpen((prev) => !prev);
+  }, []);
 
-  const isActive = (href: string) => {
+  const closeMenu = useCallback((): void => {
+    setIsOpen(false);
+  }, []);
+
+  const isActive = useCallback((href: string): boolean => {
     if (href === "/") {
       return activeHash === "/" || activeHash === "/#home" || activeHash === "";
     }
     return activeHash === href;
-  };
+  }, [activeHash]);
+
+  const handleNavLinkClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string): void => {
+    if (pathname === "/") {
+      if (href.startsWith("/#")) {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          setActiveHash(href);
+        }
+        closeMenu();
+      } else if (href === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveHash("/");
+        closeMenu();
+      }
+    } else {
+      closeMenu();
+    }
+  }, [pathname, closeMenu]);
 
   return (
     <>
@@ -79,6 +106,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.label}
                 href={item.href}
+                onClick={(e) => handleNavLinkClick(e, item.href)}
                 className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                   isActive(item.href)
                     ? "bg-slate-900 text-white dark:bg-white/15 dark:text-white border border-white/5"
@@ -155,7 +183,7 @@ const Header: React.FC = () => {
           <Link
             key={item.label}
             href={item.href}
-            onClick={closeMenu}
+            onClick={(e) => handleNavLinkClick(e, item.href)}
             className={`px-4 py-3 rounded-xl text-sm font-semibold uppercase tracking-wider transition-all duration-300 text-left ${
               isActive(item.href)
                 ? "bg-slate-900 text-white dark:bg-white/10 dark:text-white"

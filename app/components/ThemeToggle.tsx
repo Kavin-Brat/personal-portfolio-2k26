@@ -1,6 +1,23 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
+
+/**
+ * Helper utility to safely apply data-theme attributes and classes to documentElement.
+ * Encapsulates client-side DOM alterations to prevent redundant code.
+ */
+const applyTheme = (theme: "light" | "dark"): void => {
+  try {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  } catch (error) {
+    // Suppress SSR/environment errors silently
+  }
+};
 
 /**
  * ThemeToggle Component
@@ -9,27 +26,25 @@ import React, { useEffect, useState } from "react";
  * Synchronizes state dynamically across multiple toggle instances on the same page.
  */
 export default function ThemeToggle() {
-  // Default to light theme as the initial base default
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState<boolean>(false);
 
-  // Load saved theme on mount
+  // Load saved theme or system preference on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem("theme") as "light" | "dark" | null;
-      const initialTheme = saved || "light";
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initialTheme = saved || (systemPrefersDark ? "dark" : "light");
+      
       setTheme(initialTheme);
-      document.documentElement.setAttribute("data-theme", initialTheme);
-      if (initialTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      applyTheme(initialTheme);
+      setMounted(true);
     } catch (e) {
-      // ignore SSR or localStorage access blocks
+      setMounted(true); // Ensure component remains functional if localStorage fails
     }
   }, []);
 
-  // Listen to synchronisation events from other toggles
+  // Listen to synchronisation events from other theme toggles on the page
   useEffect(() => {
     const handleSync = (e: Event) => {
       const customEvent = e as CustomEvent<"light" | "dark">;
@@ -44,30 +59,26 @@ export default function ThemeToggle() {
     };
   }, [theme]);
 
-  // Handle local state theme writes
+  // Handle local state theme updates to persistent storage and DOM attributes
   useEffect(() => {
+    if (!mounted) return;
     try {
-      document.documentElement.setAttribute("data-theme", theme);
-      if (theme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      applyTheme(theme);
       localStorage.setItem("theme", theme);
     } catch (e) {
-      // ignore
+      // Suppress exceptions
     }
-  }, [theme]);
+  }, [theme, mounted]);
 
   // Click handler to toggle theme and broadcast sync state
-  const toggle = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent event bubbling on mobile side menu
+  const toggle = useCallback((e: React.MouseEvent): void => {
+    e.stopPropagation(); // Prevents side sidebar navigation close triggers
     const nextTheme = theme === "dark" ? "light" : "dark";
     setTheme(nextTheme);
     window.dispatchEvent(
       new CustomEvent("theme-toggle-sync", { detail: nextTheme })
     );
-  };
+  }, [theme]);
 
   return (
     <button
