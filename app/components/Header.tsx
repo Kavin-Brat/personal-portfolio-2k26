@@ -10,13 +10,21 @@ const Header: React.FC = () => {
   const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  // coords: Stores the bounding box coordinates (offsetLeft & offsetWidth) of the currently active navigation item.
+  // This is used to dynamically position and scale the sliding highlight background pill.
   const [coords, setCoords] = useState<{ left: number; width: number } | null>(null);
+  
+  // navRef: Reference hook pointing to the desktop <nav> wrapper container.
+  // It is utilized to locate the active list item and compute offsets relative to the menu structure.
   const navRef = React.useRef<HTMLDivElement>(null);
 
-  // Update sliding pill coordinates dynamically
+  // Dynamic Horizontal Sliding Pill Highlight Orchestrator
+  // Listens to shifts in activeHash, locating the newly activated navigation element and setting its coordinates.
   useEffect(() => {
     const updateCoords = () => {
       if (!navRef.current) return;
+      
+      // Query the DOM child inside the nav wrapper container that matches data-active="true"
       const activeLink = navRef.current.querySelector('[data-active="true"]') as HTMLElement;
       if (activeLink) {
         setCoords({
@@ -28,8 +36,11 @@ const Header: React.FC = () => {
       }
     };
 
+    // Calculate initial coordinates on mount/update
     updateCoords();
 
+    // ResizeObserver: Track dynamic browser layout resizes or screen rotations.
+    // This dynamically updates the pill's left offset and width, preventing position mismatch bugs.
     const observer = new ResizeObserver(() => {
       updateCoords();
     });
@@ -137,23 +148,24 @@ const Header: React.FC = () => {
             className="hidden md:flex gap-1 bg-slate-900/5 dark:bg-white/5 p-1 border border-slate-900/10 dark:border-white/10 rounded-full relative"
           >
             {/* Sliding Pill Background */}
-            {coords && (
-              <div
-                className="absolute bg-slate-900 dark:bg-white/15 rounded-full transition-all duration-300 ease-out pointer-events-none"
-                style={{
-                  left: `${coords.left}px`,
-                  width: `${coords.width}px`,
-                  top: "4px",
-                  bottom: "4px",
-                }}
-              />
-            )}
+            <div
+              className={`absolute bg-slate-900 dark:bg-white/15 rounded-full transition-all duration-300 ease-out pointer-events-none ${
+                coords ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              }`}
+              style={{
+                left: `${coords?.left ?? 0}px`,
+                width: `${coords?.width ?? 0}px`,
+                top: "4px",
+                bottom: "4px",
+              }}
+            />
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavLinkClick(e, item.href)}
                 data-active={isActive(item.href)}
+                // relative z-10 ensures link text sits above the absolute sliding background pill
                 className={`px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 relative z-10 ${
                   isActive(item.href)
                     ? "text-white dark:text-white"
