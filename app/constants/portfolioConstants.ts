@@ -256,3 +256,18 @@ export const FUTURE_TOPICS: BlogTopic[] = [
     comingSoon: true,
   },
 ];
+
+export interface NotFoundContent {
+  title: string;
+  errorTag: string;
+  description: string;
+  backButtonText: string;
+}
+
+export const NOT_FOUND_CONTENT: NotFoundContent = {
+  title: "Page Not Found",
+  errorTag: "Error 404",
+  description: "The page you are looking for does not exist or has been moved. Use the link above to head back to the main homepage.",
+  backButtonText: "Back to Portfolio",
+};
+

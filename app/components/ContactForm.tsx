@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import emailjs from "@emailjs/browser";
 import { CONTACT_CONTENT } from "../constants/portfolioConstants";
+import { toast } from "../hooks/useToast";
 
 // EmailJS configuration constants (can be overridden via environment variables)
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
@@ -118,10 +119,8 @@ const ContactForm: React.FC = () => {
       const configError = CONTACT_CONTENT.statusMessages.credentialsMissing;
       setErrorMessage(configError);
       setStatus("error");
+      toast.error(configError);
       
-      if (process.env.NODE_ENV === "development") {
-        alert(configError);
-      }
       console.error(configError);
       
       // Auto-hide configuration error warning after 5 seconds
@@ -144,12 +143,8 @@ const ContactForm: React.FC = () => {
  
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      
-      // Developer alert feedback in development environment
-      if (process.env.NODE_ENV === "development") {
-        alert(CONTACT_CONTENT.statusMessages.success);
-      }
-
+      toast.success(CONTACT_CONTENT.statusMessages.success);
+ 
       // Auto-hide success alert text after 5 seconds
       statusTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
@@ -158,13 +153,10 @@ const ContactForm: React.FC = () => {
       const errMsg = error instanceof Error ? error.message : JSON.stringify(error);
       setErrorMessage(errMsg);
       setStatus("error");
+      toast.error("Failed to send email. Please try again.");
       
-      // Developer alert feedback in development environment
-      if (process.env.NODE_ENV === "development") {
-        alert("Failed to send email. Error: " + errMsg);
-      }
       console.error("Failed to send email via EmailJS:", error);
-
+ 
       // Auto-hide failure alert text after 5 seconds
       statusTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
