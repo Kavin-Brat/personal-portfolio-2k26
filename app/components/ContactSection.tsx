@@ -45,7 +45,7 @@ const ContactSection: React.FC = () => {
               <div>
                 <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-450 uppercase">Current Location</h4>
                 <p className="text-sm sm:text-base font-bold text-slate-805 dark:text-slate-100 group-hover:text-amber-500 transition-colors">
-                  Bangalore, Karnataka, India
+                  Bengaluru, India
                 </p>
               </div>
             </div>
