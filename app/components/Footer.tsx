@@ -26,11 +26,16 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Middle: Tech Stack Credits (remains in the middle, wrap on tiny screens) */}
-        <div className="text-xs text-slate-500 dark:text-slate-450 flex flex-wrap items-center justify-center gap-1 font-medium order-2 md:order-2">
+        <div className="text-xs text-slate-500 dark:text-slate-400 flex flex-wrap items-center justify-center gap-1 font-medium order-2 md:order-2 relative group/build cursor-help">
           <span>Built with</span>
           <span className="font-semibold text-slate-700 dark:text-slate-300">Next.js</span>
           <span>&</span>
           <span className="font-semibold text-slate-700 dark:text-slate-300">Tailwind v4</span>
+          
+          {/* Build status check tooltip */}
+          <div className="absolute bottom-full mb-2 w-max px-2.5 py-1 text-[9px] font-semibold tracking-wide uppercase rounded bg-slate-900 text-white dark:bg-white dark:text-slate-900 border border-slate-800 dark:border-slate-200 shadow-md opacity-0 group-hover/build:opacity-100 scale-95 group-hover/build:scale-100 transition-all duration-200 pointer-events-none z-50">
+            Last Built: July 24, 2026
+          </div>
         </div>
 
         {/* Right: Social icons (first on mobile, last on desktop) */}

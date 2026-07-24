@@ -1,7 +1,19 @@
 {
   "name": "personal-portfolio-2k26",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "buildDate": "2026-07-24",
   "private": true,
+  "description": "A modern developer portfolio website displaying active resume skills, project lists, and generalized technical blog articles.",
+  "author": "Kavin Barath <kavinbarath66@gmail.com>",
+  "homepage": "https://kavinbarath.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kavin-Brat/personal-portfolio-2k26.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kavin-Brat/personal-portfolio-2k26/issues"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
