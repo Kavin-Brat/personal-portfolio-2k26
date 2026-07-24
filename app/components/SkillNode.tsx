@@ -13,6 +13,9 @@ export interface TechSkill {
   svgIcon: React.ReactNode;
   tooltipClass?: string;
   arrowClass?: string;
+  levelLabel?: string;
+  description?: string;
+  tags?: string[];
 }
 
 interface SkillNodeProps {
@@ -55,7 +58,9 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
 
           {/* Hover Tooltip Badge (responsive alignments to prevent horizontal screen cutoffs) */}
           <div
-            className={`absolute bottom-full mb-3 w-44 p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+            className={`absolute bottom-full mb-3 p-3 rounded-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300 pointer-events-none z-50 ${
+              skill.description ? "w-60" : "w-44"
+            } ${
               skill.tooltipClass || "left-1/2 -translate-x-1/2"
             } ${
               isActive
@@ -63,7 +68,7 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
                 : "opacity-0 translate-y-2 scale-95"
             }`}
           >
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center justify-between gap-2 mb-1.5">
               <span className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border ${skill.badgeBg}`}>
                 {skill.category}
               </span>
@@ -71,11 +76,36 @@ export const SkillNode: React.FC<SkillNodeProps> = React.memo(
                 {skill.experience}
               </span>
             </div>
-            <h4 className="text-xs font-bold text-slate-800 dark:text-slate-100">{skill.name}</h4>
-            <div className="mt-1 flex items-center justify-between text-[11px]">
-              <span className="text-slate-500 dark:text-slate-400">Proficiency:</span>
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">{skill.level}</span>
+            <h4 className="text-xs font-bold text-slate-800 dark:text-slate-100 mb-1">{skill.name}</h4>
+            
+            {skill.description && (
+              <p className="text-[10px] leading-relaxed text-slate-650 dark:text-slate-400 mb-2">
+                {skill.description}
+              </p>
+            )}
+
+            <div className="flex items-center justify-between text-[11px] border-t border-slate-100 dark:border-slate-800/60 pt-1.5 mt-1">
+              <span className="text-slate-500 dark:text-slate-400 text-[10px]">
+                {skill.levelLabel || "Proficiency:"}
+              </span>
+              <span className="font-semibold text-indigo-600 dark:text-indigo-400 text-[10px]">
+                {skill.level}
+              </span>
             </div>
+
+            {skill.tags && skill.tags.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-2 pt-1.5 border-t border-slate-100 dark:border-slate-800/60">
+                {skill.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-1.5 py-0.5 rounded text-[8px] font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+            
             {/* Tooltip Arrow */}
             <div className={`absolute top-full -mt-px border-4 border-transparent border-t-white dark:border-t-slate-900 ${
               skill.arrowClass || "left-1/2 -translate-x-1/2"

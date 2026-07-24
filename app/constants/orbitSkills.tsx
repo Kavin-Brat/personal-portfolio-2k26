@@ -93,7 +93,26 @@ export const TECH_SKILLS: TechSkill[] = [
     ),
   },
 
-  // --- Orbit 5: Tailwind CSS (Innermost Ring - 60% Radius, Clockwise 16s) ---
+  // --- Orbit 5: AI Tools (Innermost Ring - 60% Radius, Clockwise 16s) ---
+  {
+    id: "ai-tools",
+    name: "Gemini • OpenAI • Claude",
+    category: "AI / LLM Stack",
+    level: "Development",
+    experience: "1+ Year",
+    color: "from-blue-400 via-indigo-500 to-purple-500",
+    badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+    orbitClass: "w-[60%] h-[60%] animate-[spin_16s_linear_infinite]",
+    positionClass: "top-0 left-1/2 -translate-x-1/2",
+    svgIcon: (
+      <img
+        src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/gemini.svg"
+        alt="Gemini"
+        className="w-5 h-5 object-contain"
+      />
+    ),
+  },
+  // --- Orbit 6: Tailwind CSS (Innermost Ring - 60% Radius, Clockwise 16s) ---
   {
     id: "tailwind",
     name: "Tailwind CSS",

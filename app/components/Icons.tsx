@@ -56,6 +56,17 @@ export const SkillIcon: React.FC<{ name: string; icon?: string }> = ({ name, ico
     // other mappings remain unchanged
   };
   const slug = icon ?? map[name] ?? name.toLowerCase().replace(/\s+/g, "");
+  
+  if (slug === "googlegemini" || slug === "gemini") {
+    return (
+      <img
+        src="https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@latest/icons/gemini.svg"
+        alt={name}
+        className="inline-block w-5 h-5 mr-1 align-middle object-contain"
+      />
+    );
+  }
+
   const src = `https://skillicons.dev/icons?i=${slug}`;
   return (
     <img
