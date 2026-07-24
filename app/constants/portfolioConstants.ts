@@ -77,16 +77,16 @@ export const PORTFOLIO_SKILLS: PortfolioSkills = {
 } as const;
 
 export const DOMAIN_EXPERTISE: string[] = [
-  "FinTech & Global Remittance",
-  "Transaction Management Systems",
-  "Micro Frontend Architecture",
-  "Enterprise Portal Development",
-  "Real-time FX Rate Visualization",
-  "Fintech Partner Onboarding",
-  "API Gateway Integration",
-  "Financial Dashboards & Analytics",
-  "Customer Support Modules",
-  "Cross-functional Team Leadership",
+  "FinTech",
+  "E-Commerce & Q-Commerce",
+  "CRM & Client Portals",
+  "Enterprise SaaS Platforms",
+  "Partner Onboarding Systems",
+  "AI Chatbots & GenAI",
+  "Customer Support Platforms",
+  "Microservices & Micro-Frontends",
+  "Inventory & Logistics",
+  "Event & Ticket Booking"
 ];
 
 export const JOBS_EXPERIENCE: Job[] = [
@@ -109,7 +109,7 @@ export const JOBS_EXPERIENCE: Job[] = [
     duration: "08/2021 - 02/2024",
     location: "Bengaluru, India",
     description: [
-      "Engineered core modules for two enterprise fintech solutions: a Partner Management Portal automating API onboarding workflows for external fintech partners, and the Engage Portal tracking global remittance data streams.",
+      "Engineered core modules for two enterprise transactional solutions: a Partner Management Portal automating API onboarding workflows for external partners, and the Engage Portal tracking global remittance data streams.",
       "Architected & developed high-performance analytics dashboards within the Engage Plus Portal using React.js and Vite, delivering real-time transaction summaries, ledger details, dynamic FX rate visualizations, and custom daily dashboard charting tools.",
       "Designed and deployed an integrated customer support module that streamlined transaction issue resolution, significantly reducing ticket resolution latency for end-users.",
       "Optimized application load times and state synchronization across complex web interfaces by implementing clean code architectures, advanced data-fetching paradigms, and robust REST API integrations.",
@@ -136,8 +136,8 @@ export const PROJECTS: Project[] = [
   {
     name: "Partner Management Portal",
     duration: "08/2021 - 02/2023",
-    subtitle: "Fintech Partner Onboarding & API Integration",
+    subtitle: "Partner Onboarding & API Integration",
     description:
-      "A fintech partner onboarding platform offering real-time access to APIs, allowing partners to generate reports based on specific corridors and test cases, track API testing progress in UAT environments, and receive technical support for smooth integration and collaboration.",
+      "A partner onboarding platform offering real-time access to APIs, allowing partners to generate reports based on specific corridors and test cases, track API testing progress in UAT environments, and receive technical support for smooth integration and collaboration.",
   },
 ];

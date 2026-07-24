@@ -189,7 +189,7 @@ export default function CommandPaletteModal() {
         break;
       case "about":
         newHistory.push({
-          text: "Kavin Barath - Senior Full-Stack Engineer specializing in React.js, Next.js, and high-performance micro-frontends.",
+          text: "Senior Full-Stack Engineer with 5+ years of experience specializing in React.js and Node.js. Proven track record of leading teams, collaborating across cross-functional units, and delivering customer-centric solutions with robust API integrations.",
           type: "output",
         });
         break;
@@ -197,13 +197,13 @@ export default function CommandPaletteModal() {
         newHistory.push(
           { text: "Frontend: React.js, Next.js, TypeScript, Tailwind CSS", type: "output" },
           { text: "Backend: Node.js, Express, REST APIs, Python", type: "output" },
-          { text: "Expertise: Enterprise Fintech, Micro Frontends, High-Volume Data Systems", type: "output" }
+          { text: "Expertise: Enterprise Applications, Micro Frontends, High-Volume Data Systems", type: "output" }
         );
         break;
       case "projects":
         newHistory.push(
           { text: "Featured Projects:", type: "output" },
-          { text: "  - Fintech dashboard (real-time high-throughput metrics)", type: "output" },
+          { text: "  - Real-time analytics dashboard (high-throughput metrics)", type: "output" },
           { text: "  - Personal Portfolio 2026 (Modern glassmorphism)", type: "output" }
         );
         break;

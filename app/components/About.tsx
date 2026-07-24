@@ -18,10 +18,10 @@ const About: React.FC = () => {
         {/* Description */}
         <div className="md:col-span-7 space-y-6 text-slate-700 dark:text-slate-400 text-left text-base sm:text-lg leading-relaxed">
           <p>
-            Senior Full-Stack Engineer with <strong>5 years of experience</strong> specializing in building and scaling enterprise-level applications using React.js and Node.js. My core philosophy centers around writing clean, maintainable code, with deep expertise in Micro Frontend architectures, real-time analytics, and high-performance dashboards with live FX rate visualizations.
+            Senior Full-Stack Engineer with <strong>5+ years of experience</strong> specializing in building and scaling enterprise-level applications using <strong>React.js and Node.js</strong>. Proven track record of leading development teams, collaborating across cross-functional units, and delivering customer-centric solutions with robust API integrations.
           </p>
           <p>
-            Beyond engineering, I thrive on leading teams, driving code quality through rigorous reviews, and partnering directly with product and business stakeholders to translate complex compliance workflows into scalable, maintainable technical solutions.
+            Strong advocate for project ownership, direct client engagement, and clean code practices, with consistent recognition for high-quality product delivery in large-scale environments.
           </p>
         </div>
 

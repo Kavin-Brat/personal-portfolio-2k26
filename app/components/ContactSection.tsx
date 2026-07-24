@@ -19,8 +19,8 @@ const ContactSection: React.FC = () => {
       <div className="grid md:grid-cols-12 gap-12">
         {/* Contact info cards */}
         <div className="md:col-span-5 space-y-6 text-left">
-          <p className="text-slate-650 dark:text-slate-400 text-base sm:text-lg">
-            Have a fintech platform to build or want to collaborate on enterprise solutions? I'm always open to new opportunities and conversations.
+          <p className="text-slate-650 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
+            Looking to collaborate, discuss technical architecture, or build custom software solutions? Drop me a message—I’m always happy to connect over interesting ideas and projects.
           </p>
 
           <div className="space-y-4">

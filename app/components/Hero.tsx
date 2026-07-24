@@ -78,8 +78,8 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <p className="text-slate-600 dark:text-slate-400 max-w-lg text-base sm:text-lg leading-relaxed font-sans">
-          Senior Full-Stack Engineer with 5 years of experience building enterprise-level fintech applications using React.js and Node.js. Specializing in Micro Frontend architecture, high-volume transaction systems, and real-time financial dashboards.
+        <p className="text-slate-600 dark:text-slate-400 max-w-xl text-base sm:text-lg leading-relaxed font-sans">
+          An engineer who loves turning complex challenges into simple, elegant digital experiences. I bring ideas from concept to production with a focus on smart design and continuous learning. Always evolving with modern tech to create software that makes a real impact. Let’s build something great together.
         </p>
 
         {/* Action Buttons: Resume & Social Links */}

@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 export default function BlogPage() {
   const futureTopics = [
-    { title: "Uncoupling Monoliths to Microservices", desc: "A practical guide to database separation and event-driven patterns in fintech applications." },
+    { title: "Uncoupling Monoliths to Microservices", desc: "A practical guide to database separation and event-driven patterns in enterprise applications." },
     { title: "Securing AWS Event-Driven Models", desc: "Fine-grained IAM policy scripting, API Gateways authorization, and secure Lambda deployments." },
     { title: "Next.js 16 & React 19 Client Workflows", desc: "Exploring the new rendering pipelines, server components, and performance optimizations." },
     { title: "Database Tuning for Transactional Integrity", desc: "Indexing strategies, locking profiles, and read/write scaling in PostgreSQL and MySQL." }
