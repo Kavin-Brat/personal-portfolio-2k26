@@ -59,7 +59,7 @@ const OrbitVisual: React.FC = () => {
       </div>
 
       {/* Backlight glow/shadow behind the avatar (black on light theme, white on dark theme) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38%] h-[38%] md:w-[48%] md:h-[48%] rounded-full bg-black/14 dark:bg-white/8 blur-2xl pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] h-[44%] md:w-[48%] md:h-[48%] rounded-full bg-black/14 dark:bg-white/8 blur-2xl pointer-events-none z-0" />
 
       {/* Central Profile Avatar Component */}
       <CentralAvatar

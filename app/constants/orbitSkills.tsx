@@ -18,7 +18,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "4+ Years",
     color: "from-cyan-400 to-blue-500",
     badgeBg: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
-    orbitClass: "w-[92%] h-[92%] animate-[spin_42s_linear_infinite]",
+    orbitClass: "w-[94%] h-[94%] md:w-[92%] md:h-[92%] animate-[spin_42s_linear_infinite]",
     positionClass: "top-0 left-1/2 -translate-x-1/2",
     svgIcon: (
       <img
@@ -38,7 +38,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "1+ Year",
     color: "from-amber-400 to-orange-500",
     badgeBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-    orbitClass: "w-[86%] h-[86%] md:w-[84%] md:h-[84%] animate-[spin_34s_linear_infinite]",
+    orbitClass: "w-[88%] h-[88%] md:w-[84%] md:h-[84%] animate-[spin_34s_linear_infinite]",
     positionClass: "top-1/2 right-0 -translate-y-1/2",
     tooltipClass: "right-[-8px] translate-x-0 md:left-1/2 md:-translate-x-1/2",
     arrowClass: "right-4 translate-x-0 md:left-1/2 md:-translate-x-1/2",
@@ -60,7 +60,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "4+ Years",
     color: "from-emerald-400 to-green-600",
     badgeBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-    orbitClass: "w-[74%] h-[74%] md:w-[76%] md:h-[76%] animate-[spin_27s_linear_infinite]",
+    orbitClass: "w-[76%] h-[76%] animate-[spin_27s_linear_infinite]",
     positionClass: "top-1/2 left-0 -translate-y-1/2",
     tooltipClass: "left-[-8px] translate-x-0 md:left-1/2 md:-translate-x-1/2",
     arrowClass: "left-4 translate-x-0 md:left-1/2 md:-translate-x-1/2",
@@ -82,7 +82,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "3+ Years",
     color: "from-blue-500 to-indigo-600",
     badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    orbitClass: "w-[80%] h-[80%] md:w-[78%] md:h-[78%] animate-[spin_23s_linear_infinite]",
+    orbitClass: "w-[82%] h-[82%] md:w-[78%] md:h-[78%] animate-[spin_23s_linear_infinite]",
     positionClass: "bottom-0 left-1/2 -translate-x-1/2",
     tooltipPositionClass: "top-full mt-3",
     arrowPositionClass: "bottom-full -mb-px border-b-white dark:border-b-slate-900",
@@ -104,7 +104,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "1+ Year",
     color: "from-blue-400 via-indigo-500 to-purple-500",
     badgeBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-    orbitClass: "w-[68%] h-[68%] md:w-[72%] md:h-[72%] animate-[spin_18s_linear_infinite]",
+    orbitClass: "w-[70%] h-[70%] md:w-[72%] md:h-[72%] animate-[spin_18s_linear_infinite]",
     positionClass: "top-0 left-1/2 -translate-x-1/2",
     svgIcon: (
       <img
@@ -123,7 +123,7 @@ export const TECH_SKILLS: TechSkill[] = [
     experience: "4+ Years",
     color: "from-teal-400 to-cyan-500",
     badgeBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
-    orbitClass: "w-[68%] h-[68%] md:w-[72%] md:h-[72%] animate-[spin_18s_linear_infinite]",
+    orbitClass: "w-[70%] h-[70%] md:w-[72%] md:h-[72%] animate-[spin_18s_linear_infinite]",
     positionClass: "bottom-0 left-1/2 -translate-x-1/2",
     tooltipPositionClass: "top-full mt-3",
     arrowPositionClass: "bottom-full -mb-px border-b-white dark:border-b-slate-900",
