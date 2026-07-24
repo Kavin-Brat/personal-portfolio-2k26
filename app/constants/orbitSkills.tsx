@@ -122,7 +122,7 @@ export const TECH_SKILLS: TechSkill[] = [
     color: "from-teal-400 to-cyan-500",
     badgeBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
     orbitClass: "w-[60%] h-[60%] animate-[spin_16s_linear_infinite]",
-    positionClass: "top-0 left-1/2 -translate-x-1/2",
+    positionClass: "bottom-0 left-1/2 -translate-x-1/2",
     svgIcon: (
       <img
         src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
