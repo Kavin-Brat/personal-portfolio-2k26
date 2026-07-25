@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kavin Barath | Senior Software Engineer - Bangalore",
-  description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore). Specialized in React.js, Next.js, and Node.js.",
+  description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru. Specialized in React.js, Next.js, and Node.js.",
   keywords: [
     "Kavin",
     "Kavin Barath",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Kavin Barath | Senior Software Engineer - Bangalore",
-    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore). Specialized in React.js, Next.js, and Node.js.",
+    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru. Specialized in React.js, Next.js, and Node.js.",
     url: "https://kavinbarath.com",
     siteName: "Kavin Barath | Portfolio",
     locale: "en_US",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Kavin Barath | Senior Software Engineer",
-    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru (Bangalore).",
+    description: "Personal portfolio of Kavin Barath, a Senior Software Engineer & Full Stack Developer based in Bengaluru.",
   },
   robots: {
     index: true,

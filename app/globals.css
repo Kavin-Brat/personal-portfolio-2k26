@@ -263,3 +263,19 @@ html[data-theme="light"] .dark\:bg-black {
     transform: translateY(-2000px);
   }
 }
+
+/* Toast and general entry slide-in animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

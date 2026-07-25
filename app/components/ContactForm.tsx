@@ -84,7 +84,6 @@ const FormField: React.FC<FormFieldProps> = ({
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState<string>("");
   const statusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Clean up active timers on unmount to prevent state updates on unmounted component
@@ -112,12 +111,10 @@ const ContactForm: React.FC = () => {
     }
     
     setStatus("sending");
-    setErrorMessage("");
 
     // Verify presence of required configurations
     if (!EMAILJS_SERVICE_ID || !EMAILJS_NOTIFICATION_TEMPLATE_ID || !EMAILJS_AUTO_REPLY_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       const configError = CONTACT_CONTENT.statusMessages.credentialsMissing;
-      setErrorMessage(configError);
       setStatus("error");
       toast.error(configError);
       
@@ -126,7 +123,6 @@ const ContactForm: React.FC = () => {
       // Auto-hide configuration error warning after 5 seconds
       statusTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
-        setErrorMessage("");
       }, 5000);
       return;
     }
@@ -143,24 +139,34 @@ const ContactForm: React.FC = () => {
  
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      toast.success(CONTACT_CONTENT.statusMessages.success);
+      
+      // Dispatch success toast feedback (with debug details in development environment)
+      toast.success(
+        process.env.NODE_ENV === "development"
+          ? CONTACT_CONTENT.statusMessages.devSuccess
+          : CONTACT_CONTENT.statusMessages.success
+      );
  
-      // Auto-hide success alert text after 5 seconds
+      // Auto-hide success alert status after 5 seconds
       statusTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
       }, 5000);
     } catch (error) {
       const errMsg = error instanceof Error ? error.message : JSON.stringify(error);
-      setErrorMessage(errMsg);
       setStatus("error");
-      toast.error("Failed to send email. Please try again.");
+      
+      // Dispatch error toast feedback (with specific error payload in development environment)
+      toast.error(
+        process.env.NODE_ENV === "development"
+          ? CONTACT_CONTENT.statusMessages.devError.replace("{error}", errMsg)
+          : CONTACT_CONTENT.statusMessages.error
+      );
       
       console.error("Failed to send email via EmailJS:", error);
  
       // Auto-hide failure alert text after 5 seconds
       statusTimeoutRef.current = setTimeout(() => {
         setStatus("idle");
-        setErrorMessage("");
       }, 5000);
     }
   }, []);
@@ -213,22 +219,6 @@ const ContactForm: React.FC = () => {
           >
             {isSending ? CONTACT_CONTENT.statusMessages.sending : "Send Message"}
           </button>
-          
-          {status === "success" && (
-            <p className="text-sm font-semibold text-emerald-500 font-sans">
-              {process.env.NODE_ENV === "development"
-                ? CONTACT_CONTENT.statusMessages.devSuccess
-                : CONTACT_CONTENT.statusMessages.success}
-            </p>
-          )}
-
-          {status === "error" && (
-            <p className="text-sm font-semibold text-rose-500 font-sans">
-              {process.env.NODE_ENV === "development" && errorMessage
-                ? CONTACT_CONTENT.statusMessages.devError.replace("{error}", errorMessage)
-                : CONTACT_CONTENT.statusMessages.error}
-            </p>
-          )}
         </div>
       </form>
     </div>
