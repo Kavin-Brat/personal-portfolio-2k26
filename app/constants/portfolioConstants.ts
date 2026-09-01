@@ -91,9 +91,21 @@ export const DOMAIN_EXPERTISE: string[] = [
 
 export const JOBS_EXPERIENCE: Job[] = [
   {
+    role: "Freelance Full-Stack Developer",
+    company: "Self-Employed | Independent Contractor",
+    duration: "08/2026 - Present",
+    location: "Hybrid",
+    description: [
+      "Architecting and building high-performance, scalable web applications and responsive user interfaces using React.js, TypeScript, Next.js, and Node.js.",
+      "Designing custom UI component libraries, real-time analytics dashboards, and dynamic data visualization tools using Vite, Tailwind CSS, and Material UI.",
+      "Implementing clean frontend state management, server-side caching paradigms, and microservice/REST API integrations to optimize web application performance.",
+      "Partnering directly with business stakeholders to convert complex functional requirements into production-ready, pixel-perfect digital products.",
+    ],
+  },
+  {
     role: "Senior Software Engineer",
     company: "Openturf Technologies",
-    duration: "03/2024 - Present",
+    duration: "03/2024 - 07/2026",
     location: "Bengaluru, India",
     description: [
       "Architected and led the monolithic migration of the TOPS Portal (an enterprise transaction management system) into a modular Micro Frontend (MFE) architecture using Webpack Module Federation, drastically improving cross-team deployment autonomy.",
